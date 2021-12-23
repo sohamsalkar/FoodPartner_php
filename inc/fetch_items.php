@@ -26,8 +26,8 @@ include('config/config.php');
 										<div class="panel-footer text-center">
 
 											<div class="price-wrap h4">
-															<span class="price-new">&euro; <?php echo number_format($pfrow['price'], 2); ?></span> 
-												<!--<del class="price-old"> &euro; <?php //echo number_format($pfrow['old_price'], 2); ?></del>price-wrap.// -->
+															<span class="price-new">&#8377; <?php echo number_format($pfrow['price'], 2); ?></span> 
+												<!--<del class="price-old"> &#8377; <?php //echo number_format($pfrow['old_price'], 2); ?></del>price-wrap.// -->
 														</div>  
 
 												<figcaption class="info-wrap">
@@ -112,8 +112,8 @@ include('config/config.php');
 										<div class="panel-footer text-center">
 
 											<div class="price-wrap h4">
-															<span class="price-new">&euro; <?php echo number_format($prow['price'], 2); ?></span>
-												<!--<del class="price-old"> &euro; <?php //echo number_format($prow['old_price'], 2); ?></del>price-wrap.// -->
+															<span class="price-new">&#8377; <?php echo number_format($prow['price'], 2); ?></span>
+												<!--<del class="price-old"> &#8377; <?php //echo number_format($prow['old_price'], 2); ?></del>price-wrap.// -->
 														</div>
 										
 											<figcaption class="info-wrap">
