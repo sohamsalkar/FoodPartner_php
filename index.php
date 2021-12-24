@@ -87,6 +87,7 @@ include('inc/header.php');
 						
 					?>
 							<!---initialized Modal------->
+							<?php $tblno =  $_GET['tableno']; ?>
 							<div class="modal fade" id="session_init" data-backdrop="static" data-keyboard="false" style="margin-top: 80px;">
 							  <div class="modal-dialog" role="document">
 							    <div class="modal-content">
@@ -136,7 +137,7 @@ include('inc/header.php');
 							           	<div class="col-md-12">
 							          		<div class="form-group">
 									          <label for="recipient-name" class="col-form-label">Table number</label>
-									          <input type="text" class="form-control" name="tbl_no" id="tbl_no">
+									          <input type="text" class="form-control" name="tbl_no" id="tbl_no" value="<?php echo $tblno ?>" readonly>
 									        </div>
 							          	</div>
 							          </div>
