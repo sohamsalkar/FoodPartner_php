@@ -34,7 +34,7 @@ $output = '';
                              $output .= '<article class="search-result row" style="padding:20px;">
                                             <div class="col-xs-12 col-sm-12 col-md-3" >
                                               
-                                        <a href="view?p_id='.$row["productid"].'" title="'.$row["productname"].'" class="thumbnail">';
+                                        <a href="view.php?p_id='.$row["productid"].'" title="'.$row["productname"].'" class="thumbnail">';
                                               if($row["photo"] !== '' )
                                               {
                                                 $output .= '<img src="upload/'.$row["photo"].'" alt='.$row["productname"].'" style="width:230px;height:172px;"/>';
@@ -52,7 +52,7 @@ $output = '';
                                               </ul>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                                              <h3><a href="view?p_id='.$row["productid"].'" title="">'.$row["productname"].'</a></h3>
+                                              <h3><a href="view.php?p_id='.$row["productid"].'" title="">'.$row["productname"].'</a></h3>
                                              
                                               <p>'.$row["description"].'</p>
 
