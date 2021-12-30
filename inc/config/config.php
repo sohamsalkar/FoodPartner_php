@@ -14,7 +14,7 @@ if(!empty(USER_TIME_ZONE) && USER_TIME_ZONE == 'Europe/Rome')
 $current_date = date('d-m-Y');
 $current_time = date('H:i:s');
 
-$currency= "&#8377;";
+$currency= "&euro;";
 
 $conn = mysqli_connect(DATABASE_HOST,DATABASE_USERNAME,DATABASE_PASSWORD,DATABASE_NAME);
 

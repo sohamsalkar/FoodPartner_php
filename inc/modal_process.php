@@ -35,10 +35,9 @@ if(isset($db_time['reset_db_time'],$db_time['stats']) && $db_time['stats'] == 1 
 					  echo "Sorry, table number must be a number.";
 					}else
 					{
-						
-								$session_code =  "CUST" . rand(10000,99999999);
-								$_SESSION['CODE'] = $session_code;
-
+								//$session_code =  "CUST" . rand(10000,99999999);
+								
+								$_SESSION['CODE'] = $_SESSION["user_id"];
 								$_SESSION['MATES'] = $mates;
 								$_SESSION['TABLE_NO'] = $tbl_no;
 								

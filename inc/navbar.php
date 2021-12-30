@@ -45,9 +45,9 @@
                                                                       {
                                                                         echo $_COOKIE['TABLE_NO'];
                                                                       }
-                                                                      else if(isset($_SESSION['TABLE_NO'])) 
+                                                                      else if(isset($_SESSION['tblno'])) 
                                                                       {
-                                                                        echo $_SESSION['TABLE_NO'];
+                                                                        echo $_SESSION['tblno'];
                                                                       }else
                                                                       {
                                                                         echo 'Null';
