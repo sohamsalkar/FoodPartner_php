@@ -16,7 +16,7 @@ $output = '
             <th width="10%">Qty</th>  
             <th width="20%">Price</th>  
             <th width="15%">Sub</th>  
-            <th width="5%">Action</th>  
+            <th width="5%">Action</th>   	
         </tr>
 ';
 if(!empty($_SESSION["shopping_cart"]))
@@ -70,4 +70,5 @@ echo json_encode($data);
 
 
 ?>
+
 

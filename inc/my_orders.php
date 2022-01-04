@@ -1,97 +1,70 @@
 <?php
 include('config/config.php');
-
-$output = '';
-//var_dump($_POST);
-
 ?>
-<div class="col-md-12">
-         <h4 class="page-header"><i class="fas fa-utensils" ></i>&nbsp; Your Orders</h4><br/>
+<div class="container" id="orders">
+  <table>
+    <thead>
+      <th>Order No. </th>
+      <th>Date</th>
+      <th>Price</th>
+      <th>Action</th>
+    </thead>
+    <tbody>
+      <?php
+      $user = $_SESSION['CODE'];
+      $orderlistquery = mysqli_query($conn, "SELECT * FROM `orders` WHERE cust_id=$user;");
+      //echo print_r($orderlistquery) ;
+      while ($orderrow = mysqli_fetch_array($orderlistquery)) {
+      ?>
+        <td><?php echo $orderrow['order_id']; ?></td>
+        <td><?php echo $orderrow['date']; ?></td>
+        <td><?php echo $orderrow['total_price']; ?></td>
+        <td><a id="my_orderDetail"><button>VIEW</button></a></td>
 
- <?php
-                            $stmt = $conn->prepare("SELECT productid,quantity,date_purchase,time_purchase FROM purchase WHERE guest_code = ?");
-                            $stmt->bind_param('s', $_SESSION['CODE']);
-                                $stmt->execute();
-                                $stmt->store_result();    
-                                $stmt->bind_result($productid,$quantity,$date_purchase,$time_purchase);  // <- Add; #args = #cols in SELECT
-                                $json = array();
-                                if($stmt->num_rows > 0)
-                                 {
-?>
-                   <!--<h5><a href="#" data-toggle="modal" data-target="#modal_cancel"><i class="fas fa-trash-alt text-danger"></i>Request for order cancellation?</a></h5>-->
-                    <div class="table-responsive" id="order_table">
-                                <table class="table table-bordered table-striped">
-                                  <tbody>
-                                    <tr >  
-                                          <th>Order Prefrence</th>
-                                          <th width="40%">Item</th>  
-                                          <th width="10%">Quantity</th>  
-                                          <th width="20%">Price</th>  
-                                          <th width="20%">Date</th>  
-                                          <th width="15%">Sub total</th>  
-                                         
-                                      </tr>
-<?php
-                                   $total_price =0;
-                                   $order_prefer = 1;
-                                    while ($stmt->fetch()) 
-                                    {
+      <?php
+      }
+      ?>
 
-                                      $json = array('prod_id' =>$productid, 'q'=>$quantity,'date'=>$date_purchase,'time'=>$time_purchase);
+    </tbody>
+  </table>
+</div>
 
-                                            $stmt2 = $conn->prepare("SELECT productname,price FROM product WHERE productid = ?");
-                                            $stmt2->bind_param('i', $json['prod_id']);
-                                            $stmt2->execute();
-                                            $stmt2->store_result();    
-                                            $stmt2->bind_result($productname, $price);
-                                            $stmt2->fetch();
-                                            $json2 = array('p_name' =>$productname, 'price'=>$price);
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-                                              $price = $json2['price'];
-                                              $quantity = floatval($json['q']);
-                                              $total = $price * $quantity;
-                                              $total_price += $price * $quantity;                                            
-                             ?>
-                                                
-                                                <tr>
-                                                 <td><center><span class="badge badge-secondary text-center" style="background: #65cc0b;"><?php echo $order_prefer; ?></span></center></td>
-                                                  <td><?php echo $json2['p_name']; ?></td>
-                                                  <td><?php echo $quantity; ?></td>
-                                                  <td align="right" class="text-success"><?php echo $currency.' '.number_format($price,2); ?></td>
-                                                  <td align="right" class="text-success">
+<script type="text/javascript" src="ajax/cart.js"></script>
+<script type="text/javascript" src="ajax/modal.js"></script>
+<!--<script type="text/javascript" src="ajax/cancel_orders.js"></script>-->
 
+<!--google tanslater-->
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'nl'
+    }, 'google_translate_element');
+  }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-                                                     <?php
-                                   
-                                                    
-                                                          $date = ucwords(strftime("%a %d %B %Y", strtotime($json['date'])));
-                                                          $time = ucwords(strftime("%X", strtotime($json['time'])));
-                                                             echo $date.' '.$time;
-                                                        
-                  
-                          ?>  
-                                                    </td>
-                                                  <td align="right" class="text-success"><?php echo $currency.' '.number_format($total,2); ?></td>
-                                                 
-                                                </tr> 
-                                  <?php  
-                                     $order_prefer++;  
-                                    }
-                                      echo ' <tr>  
-                                                <td colspan="5" align="right"><strong>Total</strong></td>  
-                                                    <td align="right" class="text-success"><strong>'.$currency.' '.number_format($total_price,2).'</strong></td>  
-                                                    
-                                                </tr>';
-                                }else{
-                               
-                                  echo '<div class="alert alert-info" role="alert">
-                       <i class="fas fa-info-circle" ></i>&nbsp;You have not placed any orders yet.</div>';
+<script>
+  $(document).ready(function() {
+    $('#my_orderDetail').on('click', function(e) {
 
-                                }
-                                ?> 
-                            </tbody>
-                          </table>
-                        </div>
-      </div>
-     
+      //alert(query);
+      $.ajax({
+        url: "inc/orderDetails.php",
+        method: "POST",
+        data: jQuery.param({
+          orderId: 1
+        }),
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        success: function(data) {
+          $('#my_orders_result').html(data);
+          $('#orders').fadeOut();
+        }
+      });
+      e.preventDefault();
+    });
 
+  });
+</script>
