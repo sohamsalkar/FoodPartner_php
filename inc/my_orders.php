@@ -16,11 +16,12 @@ include('config/config.php');
       //echo print_r($orderlistquery) ;
       while ($orderrow = mysqli_fetch_array($orderlistquery)) {
       ?>
-        <td><?php echo $orderrow['order_id']; ?></td>
+      <tr>
+      <td><?php echo $orderrow['order_id']; ?></td>
         <td><?php echo $orderrow['date']; ?></td>
         <td><?php echo $orderrow['total_price']; ?></td>
-        <td><a id="my_orderDetail"><button>VIEW</button></a></td>
-
+        <td><a class="my_orderDetail" data-id=<?php echo $orderrow['order_id'] ?> ><button>VIEW</button></a></td>
+      </tr>
       <?php
       }
       ?>
@@ -48,14 +49,16 @@ include('config/config.php');
 
 <script>
   $(document).ready(function() {
-    $('#my_orderDetail').on('click', function(e) {
+    $('.my_orderDetail').on('click', function(e) {
+
+      var id = $(this).data('id');
 
       //alert(query);
       $.ajax({
         url: "inc/orderDetails.php",
         method: "POST",
         data: jQuery.param({
-          orderId: 1
+          orderId: id
         }),
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         success: function(data) {
