@@ -43,7 +43,10 @@
 								$totalprice+=($val['product_price']*$val['product_quantity']);
 							}
 							// echo $list;
-							if($_SESSION['current_order']==0){
+							$statusCheckQuery=mysqli_query($conn,"SELECT * from `orders` where `order_id`=$_SESSION[order_id]");
+							$statusArray=mysqli_fetch_array($statusCheckQuery);
+							$status=$statusArray['status'];
+							if(($_SESSION['current_order']==0)||($status==0)){
 								$stmt = mysqli_query($conn, "INSERT INTO `orders` ( `cust_id`, `list`, `status`, `total_price`) VALUES ($g_code, '$list',  1, $totalprice)");
 								$oid =  mysqli_query($conn, "SELECT `order_id` from `orders` where `cust_id`=$g_code and `status`= 1");
 								$result = mysqli_fetch_array($oid);
