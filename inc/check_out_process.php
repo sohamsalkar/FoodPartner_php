@@ -48,16 +48,17 @@
 								$oid =  mysqli_query($conn, "SELECT `order_id` from `orders` where `cust_id`=$g_code and `status`= 1");
 								$result = mysqli_fetch_array($oid);
 								$_SESSION['order_id']=$result['order_id'];
-								echo $oid;
+								echo $_SESSION['order_id'];
 								$_SESSION['current_order']=1;
 								$oid->close();
 							}
 							else{
+								echo "inside update";
 								$oid =  mysqli_query($conn, "SELECT `list`,`total_price` from `orders` where `order_id`='".$_SESSION['order_id']."';");
 								$result = mysqli_fetch_array($oid);
 								$l = $result['list'].$list;
 								$p = $result['total_price']+$totalprice;								
-								$stmt = mysqli_query($conn, "UPDATE `orders` SET  `list`=$l,  `total_price`=$p WHERE `order_id`='".$_SESSION['order_id']."';");
+								$stmt = mysqli_query($conn, "UPDATE `orders` SET  `list`='$l',  `total_price`=$p WHERE `order_id`=$_SESSION[order_id]");
 								$oid->close();
 							}
 							if ($stmt) {
@@ -71,7 +72,8 @@
 								// $st->close();
 								// $stmt->close();
 							} else {
-
+								echo $_SESSION['current_order'];
+								echo $_SESSION['order_id'];
 								if ($shown == 0) //show msg only once
 								{
 									echo 'ERROR: while placing your order. Please contact restaurant owner';
