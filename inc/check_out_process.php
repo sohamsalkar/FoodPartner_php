@@ -36,12 +36,31 @@
 							include "src/order_send/part_2.php";
 
 							$list = "";
+							$totalprice=0;
 							foreach ($_SESSION["shopping_cart"] as $number => $val) {
 								// prepare and bind
 								$list = $list . $val['product_id'] . "-" . $val['product_quantity'] . ",";
+								$totalprice+=($val['product_price']*$val['product_quantity']);
 							}
-							echo $list;
-							if ($stmt = mysqli_query($conn, "INSERT INTO `orders`(`cust_id`, `list`, `date`, `status`, `total_price`) VALUES ($g_code,'$list','',1,2323)")) {
+							// echo $list;
+							if($_SESSION['current_order']==0){
+								$stmt = mysqli_query($conn, "INSERT INTO `orders` ( `cust_id`, `list`, `status`, `total_price`) VALUES ($g_code, '$list',  1, $totalprice)");
+								$oid =  mysqli_query($conn, "SELECT `order_id` from `orders` where `cust_id`=$g_code and `status`= 1");
+								$result = mysqli_fetch_array($oid);
+								$_SESSION['order_id']=$result['order_id'];
+								echo $oid;
+								$_SESSION['current_order']=1;
+								$oid->close();
+							}
+							else{
+								$oid =  mysqli_query($conn, "SELECT `list`,`total_price` from `orders` where `order_id`='".$_SESSION['order_id']."';");
+								$result = mysqli_fetch_array($oid);
+								$l = $result['list'].$list;
+								$p = $result['total_price']+$totalprice;								
+								$stmt = mysqli_query($conn, "UPDATE `orders` SET  `list`=$l,  `total_price`=$p WHERE `order_id`='".$_SESSION['order_id']."';");
+								$oid->close();
+							}
+							if ($stmt) {
 
 								if ($shown == 0) //show msg only once
 								{
@@ -49,19 +68,21 @@
 									header('location:../checkout.php?er=false');
 									$shown = 1;
 								}
-								$st->close();
-								$stmt->close();
+								// $st->close();
+								// $stmt->close();
 							} else {
 
 								if ($shown == 0) //show msg only once
 								{
 									echo 'ERROR: while placing your order. Please contact restaurant owner';
-									header('location:../checkout.php?er=true?list='+$list);
+									header('location:../checkout.php?er=true?list=' + $list);
 									$shown = 1;
 								}
-								$st->close();
-								$stmt->close();
+								// $st->close();
+								// $stmt->close();
 							}
+							$st->close();
+							$stmt->close();
 
 							//include email template parts
 							include "src/order_send/part_3.php";
