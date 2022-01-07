@@ -48,7 +48,8 @@
 							// echo $list;
 
 							if (($_SESSION['current_order'] == 0)) {
-								$stmt = mysqli_query($conn, "INSERT INTO `orders` ( `cust_id`, `list`,`tbl_no`, `status`, `total_price`) VALUES ($g_code, '$list', $table ,1, $totalprice)");
+								$mates=$_SESSION['MATES'];
+								$stmt = mysqli_query($conn, "INSERT INTO `orders` ( `cust_id`, `list`,`tbl_no`,`reserve_for`, `status`, `total_price`) VALUES ($g_code, '$list', $table,$mates ,1, $totalprice)");
 								$oid =  mysqli_query($conn, "SELECT `order_id` from `orders` where `cust_id`=$g_code and `status`= 1");
 								$result = mysqli_fetch_array($oid);
 								$_SESSION['order_id'] = $result['order_id'];
