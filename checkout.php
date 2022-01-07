@@ -83,7 +83,6 @@ if (!file_exists('inc/config/db.inc.config.php')) {
                         $total = $price * $quantity;
                         $total_price += $price * $quantity;
 
-
                     ?>
 
 
@@ -91,7 +90,7 @@ if (!file_exists('inc/config/db.inc.config.php')) {
                           <td><?php echo $productname; ?></td>
                           <td><?php echo $quantity; ?></td>
                           <td align="right" class="text-success"><?php echo $currency . ' ' . $price; ?></td>
-                          <td align="right" class="text-success"><?php echo $currency . ' ' . $total_price; ?></td>
+                          <td align="right" class="text-success"><?php echo $currency . ' ' . $total; ?></td>
 
                         </tr>
 
