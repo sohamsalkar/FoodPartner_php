@@ -44,14 +44,11 @@ if (!file_exists('inc/config/db.inc.config.php')) {
 
 
 
-            <?php $stmt = $conn->prepare("SELECT list,total_price FROM orders WHERE status = 1 and cust_id = ?");  // query written
-
-            $stmt->bind_param('s', $_SESSION['CODE']);
-            $stmt->execute();
-            $stmt->store_result();
-            $stmt->bind_result($list, $total_price);  // <- Add; #args = #cols in SELECT
-            $json = array();
-            if ($stmt->num_rows > 0) {
+            <?php
+            $order_id = $_SESSION['order_id'];
+            $stmt = mysqli_query($conn, "SELECT `list` FROM `orders` WHERE order_id=$order_id;");
+            $list = mysqli_fetch_array($stmt);
+            if ($list[0] != null) {
 
 
             ?>
@@ -70,42 +67,38 @@ if (!file_exists('inc/config/db.inc.config.php')) {
 
 
                     <?php
-                    //need to parse the list
-                    // $val['product_id']
-                    //$val['product_quantity']
+                    $str_arr = preg_split("/[_,\- ]+/", $list[0]); //copy from this
+                    //print_r($str_arr);
+                    $l = count($str_arr);
                     $total_price = 0;
-                    while ($stmt->fetch()) {
-
-                      $json = array('prod_id' => $productid, 'q' => $list);
-
-                      $stmt2 = $conn->prepare("SELECT productname,price FROM product WHERE productid = ?");
-                      $stmt2->bind_param('i', $json['prod_id']);
-                      $stmt2->execute();
-                      $stmt2->store_result();
-                      $stmt2->bind_result($productname, $price);
-                      $stmt2->fetch();
-                      $json2 = array('p_name' => $productname, 'price' => $price);
-
-                      //$price = $json2['price'];
-                      //$quantity = floatval($json['q']);
-                      //$total = $price * $quantity;
-                      //$total_price += $price * $quantity;
+                    $i = 0;
+                    while ($i < $l - 1) {
+                      if ($i % 2 == 0) {
+                        $stmt2 = $conn->prepare("SELECT productname,price FROM product WHERE productid = $str_arr[$i]");
+                        $stmt2->execute();
+                        $stmt2->store_result();
+                        $stmt2->bind_result($productname, $price);
+                        $stmt2->fetch();
+                        $quantity = $str_arr[$i + 1];
+                        $total = $price * $quantity;
+                        $total_price += $price * $quantity;
 
 
                     ?>
 
 
-                      <tr>
-                        <td><?php echo $json2['p_name']; ?></td>
-                        <td><?php echo $list; ?></td>
-                        <td align="right" class="text-success"><?php echo $currency . ' ' . $price; ?></td>
-                        <td align="right" class="text-success"><?php echo $currency . ' ' . $total_price; ?></td>
+                        <tr>
+                          <td><?php echo $productname; ?></td>
+                          <td><?php echo $quantity; ?></td>
+                          <td align="right" class="text-success"><?php echo $currency . ' ' . $price; ?></td>
+                          <td align="right" class="text-success"><?php echo $currency . ' ' . $total_price; ?></td>
 
-                      </tr>
+                        </tr>
 
 
                   <?php
-
+                      }
+                      $i++;
                     }
 
                     echo ' <tr>  
