@@ -23,29 +23,29 @@ $output = '';
             <th width="15%">Sub total</th>
           </tr>
           <?php
-          $str_arr = preg_split("/[_,\- ]+/", $list[0]);
+          $str_arr = preg_split("/[_,\- ]+/", $list[0]); //copy from this
           //print_r($str_arr);
-          $l=count($str_arr);
+          $l = count($str_arr);
           $total_price = 0;
           $i = 0;
-          while ($i<$l-1) {
+          while ($i < $l - 1) {
             if ($i % 2 == 0) {
               $stmt2 = $conn->prepare("SELECT productname,price FROM product WHERE productid = $str_arr[$i]");
               $stmt2->execute();
               $stmt2->store_result();
               $stmt2->bind_result($productname, $price);
               $stmt2->fetch();
-              $quantity = $str_arr[$i+1];
+              $quantity = $str_arr[$i + 1];
               $total = $price * $quantity;
               $total_price += $price * $quantity;
           ?>
 
-            <tr>
-              <td><?php echo $productname ?></td>
-              <td><?php echo $quantity; ?></td>
-              <td align="right" class="text-success"><?php echo $currency . ' ' . number_format($price, 2); ?></td>
-              <td align="right" class="text-success"><?php echo $currency . ' ' . number_format($total, 2); ?></td>
-            </tr>
+              <tr>
+                <td><?php echo $productname ?></td>
+                <td><?php echo $quantity; ?></td>
+                <td align="right" class="text-success"><?php echo $currency . ' ' . number_format($price, 2); ?></td>
+                <td align="right" class="text-success"><?php echo $currency . ' ' . number_format($total, 2); ?></td>
+              </tr>
         <?php
             }
             $i++;
