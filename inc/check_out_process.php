@@ -13,7 +13,10 @@
 
 
 				<?php
-
+				$table = $_SESSION['tblno'];
+				if (isset($_SESSION['order_id'])) {
+					$temp_order = $_SESSION['order_id'];
+				}
 				$reset = $conn->prepare("SELECT guest_code FROM guest WHERE guest_code= ?");
 				$reset->bind_param("s", $_COOKIE['CODE']);
 				$reset->bind_result($g_code);
@@ -36,31 +39,31 @@
 							include "src/order_send/part_2.php";
 
 							$list = "";
-							$totalprice=0;
+							$totalprice = 0;
 							foreach ($_SESSION["shopping_cart"] as $number => $val) {
 								// prepare and bind
 								$list = $list . $val['product_id'] . "-" . $val['product_quantity'] . ",";
-								$totalprice+=($val['product_price']*$val['product_quantity']);
+								$totalprice += ($val['product_price'] * $val['product_quantity']);
 							}
 							// echo $list;
-							$statusCheckQuery=mysqli_query($conn,"SELECT * from `orders` where `order_id`=$_SESSION[order_id]");
-							$statusArray=mysqli_fetch_array($statusCheckQuery);
-							$status=$statusArray['status'];
-							if(($_SESSION['current_order']==0)||($status==0)){
-								$stmt = mysqli_query($conn, "INSERT INTO `orders` ( `cust_id`, `list`, `status`, `total_price`) VALUES ($g_code, '$list',  1, $totalprice)");
+
+							if (($_SESSION['current_order'] == 0)) {
+								$stmt = mysqli_query($conn, "INSERT INTO `orders` ( `cust_id`, `list`,`tbl_no`, `status`, `total_price`) VALUES ($g_code, '$list', $table ,1, $totalprice)");
 								$oid =  mysqli_query($conn, "SELECT `order_id` from `orders` where `cust_id`=$g_code and `status`= 1");
 								$result = mysqli_fetch_array($oid);
-								$_SESSION['order_id']=$result['order_id'];
+								$_SESSION['order_id'] = $result['order_id'];
 								echo $_SESSION['order_id'];
-								$_SESSION['current_order']=1;
+								$_SESSION['current_order'] = 1;
 								$oid->close();
-							}
-							else{
-								echo "inside update";
-								$oid =  mysqli_query($conn, "SELECT `list`,`total_price` from `orders` where `order_id`='".$_SESSION['order_id']."';");
+							} else {
+								//echo "inside update";
+								$statusCheckQuery = mysqli_query($conn, "SELECT * from `orders` where `order_id`=$_SESSION[order_id]");
+								$statusArray = mysqli_fetch_array($statusCheckQuery);
+								$status = $statusArray['status'];
+								$oid =  mysqli_query($conn, "SELECT `list`,`total_price` from `orders` where `order_id`='" . $_SESSION['order_id'] . "';");
 								$result = mysqli_fetch_array($oid);
-								$l = $result['list'].$list;
-								$p = $result['total_price']+$totalprice;								
+								$l = $result['list'] . $list;
+								$p = $result['total_price'] + $totalprice;
 								$stmt = mysqli_query($conn, "UPDATE `orders` SET  `list`='$l',  `total_price`=$p WHERE `order_id`=$_SESSION[order_id]");
 								$oid->close();
 							}
