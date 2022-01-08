@@ -1,28 +1,30 @@
 <?php
 include('config/config.php');
 ?>
-<div class="container" id="orders">
-  <table>
+<div class="table-responsive" id="orders">
+  <table class="table table-bordered table-striped">
     <thead>
-      <th>Order No. </th>
-      <th>Date</th>
-      <th>Price</th>
-      <th>Action</th>
+      <th width="10%" class="text-center">Sr No. </th>
+      <th width="20%" class="text-center">Date</th>
+      <th width="10%" class="text-center">Bill Amount</th>
+      <th width="20%" class="text-center">Detailed Order</th>
     </thead>
     <tbody>
       <?php
       $user = $_SESSION['CODE'];
-      $orderlistquery = mysqli_query($conn, "SELECT * FROM `orders` WHERE cust_id=$user;");
+      $orderlistquery = mysqli_query($conn, "SELECT * FROM `orders` WHERE cust_id=$user and `status`=0 ORDER BY `date` DESC;");
       //echo print_r($orderlistquery) ;
+      $srno=1;
       while ($orderrow = mysqli_fetch_array($orderlistquery)) {
       ?>
       <tr>
-      <td><?php echo $orderrow['order_id']; ?></td>
-        <td><?php echo $orderrow['date']; ?></td>
-        <td><?php echo $orderrow['total_price']; ?></td>
-        <td><a class="my_orderDetail" data-id=<?php echo $orderrow['order_id'] ?> ><button>VIEW</button></a></td>
+        <td class="text-center"><?php echo $srno ?></td>
+        <td class="text-center"><?php echo $orderrow['date']; ?></td>
+        <td class="text-center"><?php echo $orderrow['total_price']; ?></td>
+        <td class="text-center"><a class="my_orderDetail text-decoration-none" data-id=<?php echo $orderrow['order_id'] ?> ><button class="btn btn-success">VIEW</button></a></td>
       </tr>
       <?php
+         $srno++;
       }
       ?>
 
@@ -36,16 +38,6 @@ include('config/config.php');
 <script type="text/javascript" src="ajax/cart.js"></script>
 <script type="text/javascript" src="ajax/modal.js"></script>
 <!--<script type="text/javascript" src="ajax/cancel_orders.js"></script>-->
-
-<!--google tanslater-->
-<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'nl'
-    }, 'google_translate_element');
-  }
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
   $(document).ready(function() {
