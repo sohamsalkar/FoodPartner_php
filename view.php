@@ -1,50 +1,49 @@
-
-<?php 
-if(!file_exists('inc/config/db.inc.config.php')){
+<?php
+if (!file_exists('inc/config/db.inc.config.php')) {
 	header('location:install/start.php');
 	die();
 }
 ?>
 
 <?php include('inc/header.php'); ?>
+
 <body>
-<?php include('inc/navbar.php'); ?>
-<style type="text/css">
-		
-		.product{
+	<?php include('inc/navbar.php'); ?>
+	<style type="text/css">
+		.product {
 			border: 1px solid #dddddd;
 			height: 321px;
 		}
 
-		.product>img{
+		.product>img {
 			max-width: 230px;
 		}
 
-		.product-rating{
+		.product-rating {
 			font-size: 20px;
 			margin-bottom: 25px;
 		}
 
-		.product-title{
+		.product-title {
 			font-size: 20px;
 		}
 
-		.product-desc{
+		.product-desc {
 			font-size: 14px;
 		}
 
-		.product-price{
+		.product-price {
 			font-size: 22px;
 		}
 
-		.product-stock{
+		.product-stock {
 			color: #74DF00;
 			font-size: 20px;
 			margin-top: 10px;
 		}
 
-		.product-info{
-				margin-top: 50px;
+		.product-info {
+			margin-top: 50px;
 		}
 
 		/*********************************************
@@ -61,7 +60,7 @@ if(!file_exists('inc/config/db.inc.config.php')){
 			border-radius: 0px;
 		}
 
-		.container-fluid{
+		.container-fluid {
 			max-width: 1140px;
 			margin: 0 auto;
 		}
@@ -104,7 +103,7 @@ if(!file_exists('inc/config/db.inc.config.php')){
 			border-bottom: 1px solid #DDD;
 		}
 
-		.service1-item > img {
+		.service1-item>img {
 			max-height: 110px;
 			max-width: 110px;
 			opacity: 0.6;
@@ -114,7 +113,7 @@ if(!file_exists('inc/config/db.inc.config.php')){
 			-webkit-transition: all .2s ease-in;
 		}
 
-		.service1-item > img:hover {
+		.service1-item>img:hover {
 			cursor: pointer;
 			opacity: 1;
 		}
@@ -127,168 +126,168 @@ if(!file_exists('inc/config/db.inc.config.php')){
 			padding-left: 50px;
 		}
 
-		.service-image-left > center > img,.service-image-right > center > img{
+		.service-image-left>center>img,
+		.service-image-right>center>img {
 			max-height: 155px;
 		}
-</style>
+	</style>
 
-<?php 
-if(!empty($_GET['p_id']))
-  {
+	<?php
+	if (!empty($_GET['p_id'])) {
 
- ?>
+	?>
 
-<div class="container-fluid">
+		<div class="container-fluid">
 
-	<div class="row">
-		<div class="col-md-8">
-
-
-			<!---searched item here------->	
-			<div id="result"></div>
-			<!---searched item here------->	
-
-			<!---searched item here------->	
-			<div id="my_orders_result"></div>
-			<!---searched item here------->	
+			<div class="row">
+				<div class="col-md-8">
 
 
+					<!---searched item here------->
+					<div id="result"></div>
+					<!---searched item here------->
 
-		
-
-    <div class="content-wrapper" id="main_section">	
-
-    	<div class="row">
-					<div class="col-md-12">
-						<a href="index.php" class="btn btn-default" style="border:none;"><i class="fas fa-arrow-circle-left" ></i> Back</a>
-					</div>
-				</div>
+					<!---searched item here------->
+					<div id="my_orders_result"></div>
+					<!---searched item here------->
 
 
-		<div class="item-container" >	
-			<div class="container">	
 
-			
 
-				<div class="col-md-7" style="margin-top: 20px;">
 
-					<?php
+					<div class="content-wrapper" id="main_section">
 
-						$sql="select * from product where productid='".$_GET['p_id']."'";
-						$query=$conn->query($sql);
-						$row=$query->fetch_array();
-
-						?>
-					<div class=" col-md-12">
-                   
-						<?php if(empty($row['photo']))
-							{
-						?>
-						<center>
-							<img id="item-display" class= "product img-responsive img-thumbnail" src="upload/noimage.jpg" style="min-width: 100%;min-height: 100%;">
-						</center>
-						
-						<?php }else{?>
-						<center>
-							<img id="item-display" class= "product img-responsive img-thumbnail" src="<?php echo 'upload/'.$row['photo'];?>" style="min-width: 100%;min-height: 100%;">
-						</center>
-						<?php }?>
-						
-					</div>
-				
-				</div>
-			
-				<div class="col-md-5 " style="margin-top: 20px;">
-					<p class="product-title"><h2 class="text-muted"><?php echo $row['productname'];?></h2></p>
-					<?php
-						$sql="select * from category where categoryid='".$row['categoryid']."'";
-						$query=$conn->query($sql);
-						$crow=$query->fetch_array();
-
-						?>
-					<small class="product-desc"><?php echo $crow['catname'];?></small>
-					
-					<hr>
-					
-
-					<div class="row">
-						 <div class="col-md-4 col-xs-6">	<div class="product-price">Price: &euro; <?php echo number_format($row['price'], 2)?></div></div>
-                       			 <div class="col-md-4 col-xs-6">
-                                     
-
-										    <div class="input-group">
-										        <span class="input-group-btn">
-										        	<button class="btn btn-default value-control" data-action="minus" data-target="quantity<?php echo $row["productid"];?>">
-										        		<span class="glyphicon glyphicon-minus"></span>
-										        	</button>
-										        </span>
-										        <input type="text" value="1" class="form-control" name="quantity" id="quantity<?php echo $row["productid"];?>" style="min-width: 50px;">
-
-										        <span class="input-group-btn">
-													<button class="btn btn-default value-control" data-action="plus" data-target="quantity<?php echo $row["productid"];?>">
-										        	<span class="glyphicon glyphicon-plus"></span>
-										        </button>
-										    	</span>
-
-										    </div>
-										
-			                        </div>
+						<div class="row">
+							<div class="col-md-12">
+								<a href="index.php" class="btn btn-default" style="border:none;"><i class="fas fa-arrow-circle-left"></i> Back</a>
+							</div>
 						</div>
 
-					<!--hidden values -->	
-				    <input type="hidden" name="hidden_name" id="name<?php echo $row["productid"];?>" value="<?php echo $row["productname"];?>" />
-					<input type="hidden" name="hidden_price" id="price<?php echo $row["productid"];?>" value="<?php echo $row["price"];?>" />
 
-					<hr>
-					<div class="btn-group cart">
-						
-							<a type="button" href="#popover_content_wrapper" class="btn btn-success add_to_cart btn-sm"  name="add_to_cart" id="<?php echo $row['productid'];?>">
-												<i class="fas fa-plus" ></i> Add to cart</a>
-						
-					</div>
+						<div class="item-container">
+							<div class="container">
 
-				
-				</div>
-			</div> 
-		</div>
 
-		<div class="container-fluid">		
-			<div class="col-md-12 product-info">
-					<ul id="myTab" class="nav nav-tabs nav_tabs">
-						
-						<li class="active"><a href="#service-one" data-toggle="tab">Description</a></li>
-						
-						<!--<li><a href="#service-three" data-toggle="tab">REVIEWS <span class="label label-info">78</span></a></li>-->
-						
-					</ul>
-				<div id="myTabContent" class="tab-content">
-						<div class="tab-pane fade in active" id="service-one">
-						 
-							<section class="container product-info">
-								<?php 
-	
-									if(empty($row["description"]))
-									{
-										echo '<div class="alert alert-info">
+
+								<div class="col-md-7" style="margin-top: 20px;">
+
+									<?php
+
+									$sql = "select * from product where productid='" . $_GET['p_id'] . "'";
+									$query = $conn->query($sql);
+									$row = $query->fetch_array();
+
+									?>
+									<div class=" col-md-12">
+
+										<?php if (empty($row['photo'])) {
+										?>
+											<center>
+												<img id="item-display" class="product img-responsive img-thumbnail" src="upload/noimage.jpg" style="min-width: 100%;min-height: 100%;">
+											</center>
+
+										<?php } else { ?>
+											<center>
+												<img id="item-display" class="product img-responsive img-thumbnail" src="<?php echo 'upload/' . $row['photo']; ?>" style="min-width: 100%;min-height: 100%;">
+											</center>
+										<?php } ?>
+
+									</div>
+
+								</div>
+
+								<div class="col-md-5 " style="margin-top: 20px;">
+									<p class="product-title">
+									<h2 class="text-muted"><?php echo $row['productname']; ?></h2>
+									</p>
+									<?php
+									$sql = "select * from category where categoryid='" . $row['categoryid'] . "'";
+									$query = $conn->query($sql);
+									$crow = $query->fetch_array();
+
+									?>
+									<small class="product-desc"><?php echo $crow['catname']; ?></small>
+
+									<hr>
+
+
+									<div class="row">
+										<div class="col-md-4 col-xs-6">
+											<div class="product-price">Price: &euro; <?php echo number_format($row['price'], 2) ?></div>
+										</div>
+										<div class="col-md-4 col-xs-6">
+
+
+											<div class="input-group">
+												<span class="input-group-btn">
+													<button class="btn btn-default value-control" data-action="minus" data-target="quantity<?php echo $row["productid"]; ?>">
+														<span class="glyphicon glyphicon-minus"></span>
+													</button>
+												</span>
+												<input type="text" value="1" class="form-control" name="quantity" id="quantity<?php echo $row["productid"]; ?>" style="min-width: 50px;">
+
+												<span class="input-group-btn">
+													<button class="btn btn-default value-control" data-action="plus" data-target="quantity<?php echo $row["productid"]; ?>">
+														<span class="glyphicon glyphicon-plus"></span>
+													</button>
+												</span>
+
+											</div>
+
+										</div>
+									</div>
+
+									<!--hidden values -->
+									<input type="hidden" name="hidden_name" id="name<?php echo $row["productid"]; ?>" value="<?php echo $row["productname"]; ?>" />
+									<input type="hidden" name="hidden_price" id="price<?php echo $row["productid"]; ?>" value="<?php echo $row["price"]; ?>" />
+
+									<hr>
+									<div class="btn-group cart">
+
+										<a type="button" href="#popover_content_wrapper" class="btn btn-success add_to_cart btn-sm" name="add_to_cart" id="<?php echo $row['productid']; ?>">
+											<i class="fas fa-plus"></i> Add to cart</a>
+
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+
+						<div class="container-fluid">
+							<div class="col-md-12 product-info">
+								<ul id="myTab" class="nav nav-tabs nav_tabs">
+
+									<li class="active"><a href="#service-one" data-toggle="tab">Description</a></li>
+
+									<!--<li><a href="#service-three" data-toggle="tab">REVIEWS <span class="label label-info">78</span></a></li>-->
+
+								</ul>
+								<div id="myTabContent" class="tab-content">
+									<div class="tab-pane fade in active" id="service-one">
+
+										<section class="container product-info">
+											<?php
+
+											if (empty($row["description"])) {
+												echo '<div class="alert alert-info">
 											  <strong>404!</strong> No description found about this product.
 											</div>';
-									}
-									else
-									{
-										
-										echo '<div class="container">
+											} else {
+
+												echo '<div class="container">
 									
 												  <blockquote>
-													<p>'.$row["description"].'</p>
+													<p>' . $row["description"] . '</p>
 												  </blockquote>
 											</div>';
-									}
-								?>
-							</section>
-										  
-						</div>
-				
-					<!--<div class="tab-pane fade" id="service-three">
+											}
+											?>
+										</section>
+
+									</div>
+
+									<!--<div class="tab-pane fade" id="service-three">
 							
 								<div class="container-fluid">
 								    <div class="row">
@@ -416,59 +415,58 @@ if(!empty($_GET['p_id']))
 					</div>
 
 				</div>-->
-				<hr>
+									<hr>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-md-4">
+
+
+					<!---cart item here------->
+					<?php include('inc/cart_display.php'); ?>
+					<!---cart item here------->
+
+
+				</div>
+
 			</div>
 
 		</div>
 
-	</div>
-</div>
-
-		</div>
-
-		<div class="col-md-4">
-
-
-			<!---cart item here------->	
-			<?php include('inc/cart_display.php'); ?>
-			<!---cart item here------->	
-
-
-		</div>
-
-	</div>
-
-	
 
 
 
-	
-<?php include "inc/footer.php";?>
-<?php
-}else
-{
-?>
-<div class="container-fluid">
-	
-    <div class="row">
-        <div class="col-md-6  col-md-offset-5">
-            <div class="error-template">
-                <h1>
-                    Oops!</h1>
-                <h2>
-                    404 Not Found</h2>
-               
-                <div class="error-actions">
-                    <a href="index.php" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span> Home</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<?php
-}
-?>
-<?php include "inc/jquery.php";?>
-<?php include "inc/checkout_timer.php";?> 
+			<?php include "inc/footer.php"; ?>
+		<?php
+	} else {
+		?>
+			<div class="container-fluid">
+
+				<div class="row">
+					<div class="col-md-6  col-md-offset-5">
+						<div class="error-template">
+							<h1>
+								Oops!</h1>
+							<h2>
+								404 Not Found</h2>
+
+							<div class="error-actions">
+								<a href="index.php" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span> Home</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<?php
+	}
+		?>
+		<?php include "inc/jquery.php"; ?>
+		<?php include "inc/checkout_timer.php"; ?>
 
 </body>

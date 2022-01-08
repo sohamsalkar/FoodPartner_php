@@ -2,6 +2,7 @@
 	footer {
 		padding: 0;
 		margin: 0;
+		margin-top: 30px;
 	}
 
 	footer .main-footer {
