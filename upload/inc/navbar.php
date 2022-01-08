@@ -73,8 +73,8 @@
         <button type="submit" id="search_product" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
       </form>
      </li>
-      <li><a href="#" id="my_prod"><i class="fas fa-utensils" ></i> My Orders</a></li> 
-      <li><a href="inc/distroy_session.php"><i class="fas fa-sign-out-alt" ></i> New table booking ? </a></li>
+      <li><a href="#" id="my_prod"><i class="fas fa-utensils" ></i> My Orders</a></li>
+      <li><a href="inc/distroy_session.php"><i class="fas fa-sign-out-alt" ></i> New table booking?</a></li>
 
     </ul>
     </div><!-- /.navbar-collapse -->
