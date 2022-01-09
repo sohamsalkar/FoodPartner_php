@@ -1,33 +1,33 @@
 <?php
-    // -------------------------------------------------------------------------
-    // DB PERAMERTERS
-    // -------------------------------------------------------------------------
- 
-    define('DATABASE_HOST', 'localhost');           // Database host
-    define('DATABASE_NAME', 'fp');           // Name of the database to be used
-    define('DATABASE_USERNAME', 'rupal');       // User name for access to database
-    define('DATABASE_PASSWORD', '1234567890');   // Password for access to database
-    define('USER_TIME_ZONE', 'Europe/Rome');
+// -------------------------------------------------------------------------
+// DB PERAMERTERS
+// -------------------------------------------------------------------------
 
-    define('DB_PREFIX', '');		        // Unique prefix of all tables in the database
+define('DATABASE_HOST', 'localhost');           // Database host
+define('DATABASE_NAME', 'qrmenu');           // Name of the database to be used
+define('DATABASE_USERNAME', 'root');       // User name for access to database
+define('DATABASE_PASSWORD', '');
+define('DB_PREFIX', '');
+define('USER_TIME_ZONE', 'Europe/Rome');
+// Unique prefix of all tables in the database
 
-	// -------------------------------------------------------------------------
-    // PASSWORDS_ENCRYPTION PERAMERTERS
-    // -------------------------------------------------------------------------
-    define('PASSWORDS_ENCRYPTION_TYPE',  'MD5');  // AES|MD5
-    define('PASSWORDS_ENCRYPTION',  'true');              // true|false
-    define('PASSWORDS_ENCRYPT_KEY', 'php_easy_installer');
+// -------------------------------------------------------------------------
+// PASSWORDS_ENCRYPTION PERAMERTERS
+// -------------------------------------------------------------------------
+define('PASSWORDS_ENCRYPTION_TYPE',  'MD5');  // AES|MD5
+define('PASSWORDS_ENCRYPTION',  'true');              // true|false
+define('PASSWORDS_ENCRYPT_KEY', 'php_easy_installer');
 
-    // -------------------------------------------------------------------------
-    // APPLICATION VERSION
-    // -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// APPLICATION VERSION
+// -------------------------------------------------------------------------
 
-	define('EI_APPLICATION_NAME', 'QR Digital Menu System');
-    define('APP_V', 'V1.5.2');
+define('EI_APPLICATION_NAME', 'Food Partner');
+define('APP_V', 'V1');
 
-    // -------------------------------------------------------------------------
-    // Author contact
-    // -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// Author contact
+// -------------------------------------------------------------------------
 
-    define('AUTHOR_FOOTER_MAIL', 'web.dev.nav@gmail.com');
-    define('AUTHOR_FOOTER_URL', 'https://navbro.online');
+define('AUTHOR_FOOTER_MAIL', 'salkarsoham2@gmail.com');
+define('AUTHOR_FOOTER_URL', 'https://www.linkedin.com/in/sohamsalkar/');
