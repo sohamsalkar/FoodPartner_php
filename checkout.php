@@ -72,6 +72,8 @@ if (!file_exists('inc/config/db.inc.config.php')) {
                     $l = count($str_arr);
                     $total_price = 0;
                     $i = 0;
+                    $pd=array();
+                    $pr=array();          
                     while ($i < $l - 1) {
                       if ($i % 2 == 0) {
                         $stmt2 = $conn->prepare("SELECT productname,price FROM product WHERE productid = $str_arr[$i]");
@@ -82,22 +84,31 @@ if (!file_exists('inc/config/db.inc.config.php')) {
                         $quantity = $str_arr[$i + 1];
                         $total = $price * $quantity;
                         $total_price += $price * $quantity;
-
+                        if(array_key_exists($productname,$pd)){
+                          $q=$pd[$productname];
+                          $pd[$productname]=$q+$quantity;
+                        }
+                        else{
+                          $pd[$productname]=$quantity;
+                          $pr[$productname]=$price;
+                        }
+                      }
+                      $i++;
+                    }
+                    foreach($pd as $key=>$value){
+          
                     ?>
 
 
                         <tr>
-                          <td><?php echo $productname; ?></td>
-                          <td><?php echo $quantity; ?></td>
-                          <td align="right" class="text-success"><?php echo $currency . ' ' . $price; ?></td>
-                          <td align="right" class="text-success"><?php echo $currency . ' ' . $total; ?></td>
-
+                          <td><?php echo $key ?></td>
+                          <td><?php echo $value; ?></td>
+                          <td align="right" class="text-success"><?php echo $pr[$key]*$value; ?></td>
+                          <td align="right" class="text-success"><?php echo $pr[$key]; ?></td>  
                         </tr>
 
 
                   <?php
-                      }
-                      $i++;
                     }
 
                     echo ' <tr>  

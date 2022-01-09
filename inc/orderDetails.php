@@ -24,10 +24,12 @@ $output = '';
           </tr>
           <?php
           $str_arr = preg_split("/[_,\- ]+/", $list[0]); //copy from this
-          //print_r($str_arr);
+          // print_r($str_arr);
           $l = count($str_arr);
           $total_price = 0;
           $i = 0;
+          $pd=array();
+          $pr=array();
           while ($i < $l - 1) {
             if ($i % 2 == 0) {
               $stmt2 = $conn->prepare("SELECT productname,price FROM product WHERE productid = $str_arr[$i]");
@@ -38,18 +40,33 @@ $output = '';
               $quantity = $str_arr[$i + 1];
               $total = $price * $quantity;
               $total_price += $price * $quantity;
-          ?>
-
-              <tr>
-                <td><?php echo $productname ?></td>
-                <td><?php echo $quantity; ?></td>
-                <td align="right" class="text-success"><?php echo $currency . ' ' . number_format($price, 2); ?></td>
-                <td align="right" class="text-success"><?php echo $currency . ' ' . number_format($total, 2); ?></td>
-              </tr>
-        <?php
+              if(array_key_exists($productname,$pd)){
+                $q=$pd[$productname];
+                $pd[$productname]=$q+$quantity;
+              }
+              else{
+                $pd[$productname]=$quantity;
+                $pr[$productname]=$price;
+              }
             }
             $i++;
           }
+          foreach($pd as $key=>$value){
+          ?>
+
+              <tr>
+                <td><?php echo $key ?></td>
+                <td><?php echo $value; ?></td>
+                <td align="right" class="text-success"><?php echo $pr[$key]*$value; ?></td>
+                <td align="right" class="text-success"><?php echo $pr[$key]; ?></td>  
+                <!-- <td align="right" class="text-success"><?php echo $currency . ' ' . number_format($price, 2); ?></td>
+                <td align="right" class="text-success"><?php echo $currency . ' ' . number_format($total, 2); ?></td> -->
+              </tr>
+        <?php
+          }
+            // }
+            // $i++;
+          // }
           echo ' <tr>  
                                                 <td colspan="3" align="right"><strong>Total</strong></td>  
                                                     <td align="right" class="text-success"><strong>' . $currency . ' ' . number_format($total_price, 2) . '</strong></td>  
