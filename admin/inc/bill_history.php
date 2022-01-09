@@ -34,18 +34,13 @@
 						$str_arr1 = preg_split("/[_,\- ]+/", $list1);
 						$l1 = count($str_arr1);
 						$iii = 0;
-						$total = array();
 						$c=0;
 						while ($iii < $l1 - 1) {
 							if ($iii % 2 == 0) {
-								if (!(array_search($str_arr1[$iii], $total))){
-									$total[$c]=$str_arr1[$iii];
-									$c++;
-								}
+								$c++;
 							}
 							$iii++;
 						}
-						$c=count($total);
 						?>
  					<td><?php echo $c; ?></td>
  					<td> <?php echo $row['date']; ?></td>

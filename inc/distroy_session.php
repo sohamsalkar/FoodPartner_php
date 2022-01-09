@@ -14,6 +14,9 @@ if (isset($_SESSION['CODE'], $_SESSION['MATES'], $_SESSION['TABLE_NO'])) {
 		unset($_SESSION['CODE']);
 		unset($_SESSION['MATES']);
 		unset($_SESSION['TABLE_NO']);
+		unset($_SESSION['order_id']);
+		unset($_SESSION['tblno']);
+		unset($_SESSION['user_id']);
 		session_destroy();
 
 ?>

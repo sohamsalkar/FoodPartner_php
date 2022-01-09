@@ -4,9 +4,9 @@
     // -------------------------------------------------------------------------
  
     define('DATABASE_HOST', 'localhost');           // Database host
-    define('DATABASE_NAME', 'fp');           // Name of the database to be used
-    define('DATABASE_USERNAME', 'rupal');       // User name for access to database
-    define('DATABASE_PASSWORD', '1234567890');   // Password for access to database
+    define('DATABASE_NAME', 'qrmenu');           // Name of the database to be used
+    define('DATABASE_USERNAME', 'root');       // User name for access to database
+    define('DATABASE_PASSWORD', '');   // Password for access to database
     define('USER_TIME_ZONE', 'Europe/Rome');
 
     define('DB_PREFIX', '');		        // Unique prefix of all tables in the database
