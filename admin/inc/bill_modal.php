@@ -5,7 +5,9 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <center>
-                    <b><h2 class="modal-title" id="myModalLabel">Order History for Order No. <?php echo $row['order_id'] ; ?></h2></b>
+                    <b>
+                        <h2 class="modal-title" id="myModalLabel">Order History for Order No. <?php echo $row['order_id']; ?></h2>
+                    </b>
                 </center>
             </div>
             <div class="modal-body">
@@ -81,10 +83,10 @@
                                             </td>
                                             <td>#<?php echo $pid; ?></td>
                                             <td><?php echo $productname; ?></td>
-                                            <td class="text-right">&euro; <?php echo $price; ?></td>
+                                            <td class="text-right">&#8377; <?php echo $price; ?></td>
                                             <td><?php echo $quantity; ?></td>
                                             <td> <?php echo $drow['date']; ?></td>
-                                            <td class="text-right text-success">&euro;
+                                            <td class="text-right text-success">&#8377;
                                                 <?php echo number_format($subtotal, 2);
                                                 ?>
                                             </td>
@@ -97,7 +99,7 @@
                                 ?>
                                 <tr>
                                     <td colspan="6" class="text-right"><b>Total</b></td>
-                                    <td class="text-right  text-success">&euro; <?php echo number_format($tp, 2); ?></td>
+                                    <td class="text-right  text-success">&#8377; <?php echo number_format($tp, 2); ?></td>
                                 </tr>
                             </tbody>
                         </table>

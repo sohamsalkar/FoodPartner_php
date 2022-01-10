@@ -213,7 +213,7 @@ if (!file_exists('inc/config/db.inc.config.php')) {
 
 									<div class="row">
 										<div class="col-md-4 col-xs-6">
-											<div class="product-price">Price: &euro; <?php echo number_format($row['price'], 2) ?></div>
+											<div class="product-price">Price: &#8377; <?php echo number_format($row['price'], 2) ?></div>
 										</div>
 										<div class="col-md-4 col-xs-6">
 
@@ -442,31 +442,31 @@ if (!file_exists('inc/config/db.inc.config.php')) {
 
 
 
-			<?php include "inc/footer.php"; ?>
-		<?php
+		<?php include "inc/footer.php"; ?>
+	<?php
 	} else {
-		?>
-			<div class="container-fluid">
+	?>
+		<div class="container-fluid">
 
-				<div class="row">
-					<div class="col-md-6  col-md-offset-5">
-						<div class="error-template">
-							<h1>
-								Oops!</h1>
-							<h2>
-								404 Not Found</h2>
+			<div class="row">
+				<div class="col-md-6  col-md-offset-5">
+					<div class="error-template">
+						<h1>
+							Oops!</h1>
+						<h2>
+							404 Not Found</h2>
 
-							<div class="error-actions">
-								<a href="index.php" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span> Home</a>
-							</div>
+						<div class="error-actions">
+							<a href="index.php" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span> Home</a>
 						</div>
 					</div>
 				</div>
 			</div>
-		<?php
+		</div>
+	<?php
 	}
-		?>
-		<?php include "inc/jquery.php"; ?>
-		<?php include "inc/checkout_timer.php"; ?>
+	?>
+	<?php include "inc/jquery.php"; ?>
+	<?php include "inc/checkout_timer.php"; ?>
 
 </body>

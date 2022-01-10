@@ -280,67 +280,68 @@
 <footer id="footer" class="footer-1">
 	<div class="main-footer widgets-dark typo-light">
 		<div class="container">
-	
-				<div class="col-xs-12 col-sm-6 col-md-3">
-					<div class="widget subscribe no-box">
-						<h5 class="widget-title">FoodPartner<span></span></h5>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui quidem dolorum quisquam nisi eaque cumque quos, a in eligendi, fugiat, vero quia veritatis veniam repellendus similique enim exercitationem saepe nostrum!</p>
+
+			<div class="col-xs-12 col-sm-6 col-md-3">
+				<div class="widget subscribe no-box">
+					<h5 class="widget-title">FoodPartner<span></span></h5>
+					<p>FoodPartner is a web application that aims to digitalize the process of restaurant. <br>This system will helps restaurant to enhance service quality for their customers and provide contactless service by reducing time wastage.
+					</p>
+				</div>
+			</div>
+
+
+			<div class="col-xs-12 col-sm-6 col-md-3">
+				<div class="widget no-box">
+					<h5 class="widget-title">Quick Links<span></span></h5>
+					<ul class="thumbnail-widget">
+						<li>
+							<div class="thumb-content"><a href="http://localhost:8080/foodpartner/index.php">&nbsp;Home</a></div>
+						</li>
+						<li>
+							<div class="thumb-content"><a href="http://localhost:8080/foodpartner/index.php">&nbsp;About Us</a></div>
+						</li>
+						<li>
+							<div class="thumb-content"><a href="http://localhost:8080/foodpartner/index.php">&nbsp;Enquiry</a></div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+
+
+			<div class="col-xs-12 col-sm-6 col-md-3">
+				<div class="widget no-box">
+					<h5 class="widget-title">Follow up<span></span></h5>
+					<a href="#" class="text-decoration-none" style="margin: 0 8px 0 0;"> <i class="fab fa-facebook" style="font-size: 25px; color:#4267B2"> </i> </a>
+					<a href="#" class="text-decoration-none" style="margin: 0 8px 0 0;"> <i class="fab fa-whatsapp" style="font-size: 25px; color:#128C7E"> </i> </a>
+					<a href="#" class="text-decoration-none" style="margin: 0 8px 0 0;"> <i class="fab fa-instagram" style="font-size: 25px; color: #405DE6"> </i> </a>
+				</div>
+			</div>
+			<br>
+			<br>
+
+
+			<div class="col-xs-12 col-sm-6 col-md-3">
+				<div class="widget no-box">
+					<h5 class="widget-title">Contact Us<span></span></h5>
+					<p>Feel free for suggestions</p>
+					<div class="emailfield">
+						<input type="text" name="email" value="Email">
+						<input name="uri" type="hidden" value="arabiantheme">
+						<input name="loc" type="hidden" value="en_US">
+						<input class="submitbutton ripplelink" type="submit" value="Subscribe">
+						</form>
 					</div>
 				</div>
 
+			</div>
 
-				<div class="col-xs-12 col-sm-6 col-md-3">
-					<div class="widget no-box">
-						<h5 class="widget-title">Quick Links<span></span></h5>
-						<ul class="thumbnail-widget">
-							<li>
-								<div class="thumb-content"><a href="#.">&nbsp;Home</a></div>
-							</li>
-							<li>
-								<div class="thumb-content"><a href="#.">&nbsp;About Us</a></div>
-							</li>
-							<li>
-								<div class="thumb-content"><a href="#.">&nbsp;Enquiry</a></div>
-							</li>
-						</ul>
-					</div>
-				</div>
-
-
-
-				<div class="col-xs-12 col-sm-6 col-md-3">
-					<div class="widget no-box">
-						<h5 class="widget-title">Follow up<span></span></h5>
-						<a href="#" class="text-decoration-none" style="margin: 0 8px 0 0;"> <i class="fab fa-facebook" style="font-size: 25px; color:#4267B2"> </i> </a>
-						<a href="#" class="text-decoration-none" style="margin: 0 8px 0 0;"> <i class="fab fa-whatsapp" style="font-size: 25px; color:#128C7E"> </i> </a>
-						<a href="#" class="text-decoration-none" style="margin: 0 8px 0 0;"> <i class="fab fa-instagram" style="font-size: 25px; color: #405DE6"> </i> </a>
-					</div>
-				</div>
-				<br>
-				<br>
-
-
-				<div class="col-xs-12 col-sm-6 col-md-3">
-					<div class="widget no-box">
-						<h5 class="widget-title">Contact Us<span></span></h5>
-						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-						<div class="emailfield">
-							<input type="text" name="email" value="Email">
-							<input name="uri" type="hidden" value="arabiantheme">
-							<input name="loc" type="hidden" value="en_US"> 
-							<input class="submitbutton ripplelink" type="submit" value="Subscribe">
-							</form>
-						</div>
-					</div>
-
-				</div>
-			
 		</div>
 
 		<div class="footer-copyright">
 			<div class="container">
 				<div class="col-md-12 text-center">
-					<p>Copyright © 2019. All rights reserved by FoodPartner.</p>
+					<p>Copyright © 2022. All rights reserved by FoodPartner.</p>
 				</div>
 			</div>
 		</div>
