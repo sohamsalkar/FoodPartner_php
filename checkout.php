@@ -72,8 +72,8 @@ if (!file_exists('inc/config/db.inc.config.php')) {
                     $l = count($str_arr);
                     $total_price = 0;
                     $i = 0;
-                    $pd=array();
-                    $pr=array();          
+                    $pd = array();
+                    $pr = array();
                     while ($i < $l - 1) {
                       if ($i % 2 == 0) {
                         $stmt2 = $conn->prepare("SELECT productname,price FROM product WHERE productid = $str_arr[$i]");
@@ -84,28 +84,28 @@ if (!file_exists('inc/config/db.inc.config.php')) {
                         $quantity = $str_arr[$i + 1];
                         $total = $price * $quantity;
                         $total_price += $price * $quantity;
-                        if(array_key_exists($productname,$pd)){
-                          $q=$pd[$productname];
-                          $pd[$productname]=$q+$quantity;
-                        }
-                        else{
-                          $pd[$productname]=$quantity;
-                          $pr[$productname]=$price;
+                        if (array_key_exists($productname, $pd)) {
+                          $q = $pd[$productname];
+                          $pd[$productname] = $q + $quantity;
+                        } else {
+                          $pd[$productname] = $quantity;
+                          $pr[$productname] = $price;
                         }
                       }
                       $i++;
                     }
-                    foreach($pd as $key=>$value){
-          
+                    foreach ($pd as $key => $value) {
+
                     ?>
 
 
-                        <tr>
-                          <td><?php echo $key ?></td>
-                          <td><?php echo $value; ?></td>
-                          <td align="right" class="text-success"><?php echo $pr[$key]*$value; ?></td>
-                          <td align="right" class="text-success"><?php echo $pr[$key]; ?></td>  
-                        </tr>
+                      <tr>
+                        <td><?php echo $key ?></td>
+                        <td><?php echo $value; ?></td>
+                        <td align="right" class="text-success"><?php echo $pr[$key]; ?></td>
+                        <td align="right" class="text-success"><?php echo $pr[$key] * $value; ?></td>
+
+                      </tr>
 
 
                   <?php
@@ -146,7 +146,7 @@ if (!file_exists('inc/config/db.inc.config.php')) {
       <div class="jumbotron text-center">
         <i class="fas fa-times-circle text-danger" style="font-size: 78px;"></i>
         <h1>Transaction fail!</h1>
-        <a href="index.php" class="btn btn-success"><i class="fas fa-arrow-circle-left"></i>Terug</a>
+        <a href="index.php" class="btn btn-success"><i class="fas fa-arrow-circle-left"></i>BACK</a>
       </div>
 
   <?php

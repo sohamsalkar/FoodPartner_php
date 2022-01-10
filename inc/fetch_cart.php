@@ -29,8 +29,8 @@ if(!empty($_SESSION["shopping_cart"]))
 		    <td>'.$order_prefer.'.</td>
 			<td>'.$values["product_name"].'</td>
 			<td>'.$values["product_quantity"].'</td>
-			<td align="right" style="color:#09b300;">&euro;'.number_format($values["product_price"], 2).'</td>
-			<td align="right" style="color:#09b300;">&euro;'.number_format($values["product_quantity"] * $values["product_price"], 2).'</td>
+			<td align="right" style="color:#09b300;">&#8377;'.number_format($values["product_price"], 2). '</td>
+			<td align="right" style="color:#09b300;">&#8377;'.number_format($values["product_quantity"] * $values["product_price"], 2).'</td>
 			<td><button name="delete" class="btn btn-danger btn-xs delete" id="'. $values["product_id"].'"><i class="fas fa-minus-circle"></i></button></td>
 		</tr>
 		';
@@ -42,7 +42,7 @@ if(!empty($_SESSION["shopping_cart"]))
 	$output .= '
 	<tr>  
         <td colspan="5" align="right">Total</td>  
-        <td align="right" style="color:#09b300;">&euro;'.number_format($total_price, 2).'</td>  
+        <td align="right" style="color:#09b300;">&#8377;'.number_format($total_price, 2).'</td>  
          
     </tr>
 	';
@@ -67,8 +67,3 @@ $data = array(
 );	
 
 echo json_encode($data);
-
-
-?>
-
-

@@ -47,7 +47,7 @@ $output = '';
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-2">
                                               <ul class="meta-search">
-                                                <li ><i class="fas fa-euro-sign" ></i> <span>'.$row["price"].'</span></li>
+                                                <li ><i class="fas fa-rupee-sign" ></i> <span>'.$row["price"].'</span></li>
                                                 <li><i class="glyphicon glyphicon-tags"></i> <span>'.$category['catname'].'</span></li>
                                               </ul>
                                             </div>
@@ -89,7 +89,3 @@ $output = '';
               exit('404 Bad Gateway. No Result Found or field empty.');
                echo '</pre>';
             }
-
-       
-
-?>
