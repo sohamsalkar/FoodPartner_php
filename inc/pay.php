@@ -18,7 +18,7 @@ try {
         "amount" => $orArray['total_price'],
         "send_email" => true,
         "allow_repeated_payments" => false,
-        "redirect_url" => "http://localhost:8080/foodpartner/inc/thankyou.php"
+        "redirect_url" => "http://localhost/foodpartner/inc/thankyou.php"
     ));
     //print_r($response);
     $url = $response['longurl'];

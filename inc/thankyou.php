@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 include('config/config.php');
-include('config/db.inc.config.php');
+//include('config/db.inc.config.php');
 $pid = $_GET['payment_id'];
 $oid = $_SESSION['order_id'];
 $orQuery = mysqli_query($conn, "SELECT * FROM `orders` where order_id=$oid");

@@ -48,7 +48,7 @@
 							// echo $list;
 
 							if (($_SESSION['current_order'] == 0)) {
-								$mates=$_SESSION['MATES'];
+								$mates = $_SESSION['MATES'];
 								$stmt = mysqli_query($conn, "INSERT INTO `orders` ( `cust_id`, `list`,`tbl_no`,`reserve_for`, `status`, `total_price`) VALUES ($g_code, '$list', $table,$mates ,1, $totalprice)");
 								$oid =  mysqli_query($conn, "SELECT `order_id` from `orders` where `cust_id`=$g_code and `status`= 1");
 								$result = mysqli_fetch_array($oid);
@@ -73,6 +73,26 @@
 								if ($shown == 0) //show msg only once
 								{
 									unset($_SESSION['shopping_cart']);
+									$custQuery = mysqli_query($conn, "SELECT * FROM `users` where u_id=$g_code");
+									$custArray = mysqli_fetch_array($custQuery);
+									$data = [
+										'phone' => '+91'.$custArray['phone'], // Receivers phone
+										'body' => 'Hello, '.$custArray['f_name'].' '.$custArray['l_name']. ' your order no is : ' . $_SESSION['order_id'], // Message
+									];
+									$json = json_encode($data); // Encode data to JSON
+									// URL for request POST /message
+									$url = 'https://api.chat-api.com/instance399014/message?token=oxljtmb1kd1ukla8';
+									// Make a POST request
+									$options = stream_context_create([
+										'http' => [
+											'method'  => 'POST',
+											'header'  => 'Content-type: application/json',
+											'content' => $json
+										]
+									]);
+									// Send a request
+									$result = file_get_contents($url, false, $options);
+									//print_r($result);
 									header('location:../checkout.php?er=false');
 									$shown = 1;
 								}
