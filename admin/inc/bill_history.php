@@ -3,17 +3,18 @@
  	Keep that in mind each row represent a unique table, deleting row might be loosing the data(orders) associated with it.
  </div>
 
-
-
+ <!--start-->
  <div class="table-responsive" style="margin-top:10px;border: none;">
  	<table id="bill" class="table table-striped table-bordered" style="width:100%">
  		<thead>
  			<tr>
  				<th>CustomerID</th>
+ 				<th>OrderID</th>
  				<th>Table No.</th>
  				<th>Total Guests</th>
  				<th>Total Orders</th>
  				<th>Date(first ordered)</th>
+ 				<th>Payment Status</th>
  				<th>Action</th>
  			</tr>
  		</thead>
@@ -27,6 +28,7 @@
 				?>
  				<tr>
  					<td>#<?php echo $row['cust_id']; ?></td>
+ 					<td>#<?php echo $row['order_id']; ?></td>
  					<td><?php echo $row['tbl_no']; ?></td>
  					<td>#<?php echo $row['reserve_for']; ?></td>
  					<?php
@@ -34,7 +36,7 @@
 						$str_arr1 = preg_split("/[_,\- ]+/", $list1);
 						$l1 = count($str_arr1);
 						$iii = 0;
-						$c=0;
+						$c = 0;
 						while ($iii < $l1 - 1) {
 							if ($iii % 2 == 0) {
 								$c++;
@@ -44,9 +46,19 @@
 						?>
  					<td><?php echo $c; ?></td>
  					<td> <?php echo $row['date']; ?></td>
+ 					</td>
  					<td>
-
-
+ 						<?php
+							$trquery = mysqli_query($conn, "SELECT * FROM `transactions` where order_id=" . $row['order_id'] . "; ");
+							$trArray = mysqli_fetch_array($trquery);
+							if ($trArray['p_id'] != "") {
+								echo '<b style ="text-align:center;display:block;color:green;"><i class="fa fa-check" aria-hidden="true">' . $trArray['p_id'] . '</i> </b>';
+							} else {
+								echo '<b style ="text-align:center;display:block;color:red;"><i class="fas fa-hourglass"> Pending</i></b>';
+							}
+							?>
+ 					</td>
+ 					<td>
  						<div class="row" style="max-width: 170px;">
  							<div class="col-md-6">
  								<a href="#details<?php echo $row['order_id']; ?>" data-toggle="modal" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span> view Bill</a>
@@ -60,25 +72,30 @@
  									</button>
  								</form>
  							</div>
-
  						</div>
-
-
- 					</td>
  				</tr>
  			<?php
 				}
 				?>
+
+
  		</tbody>
+
+
  		<tfoot>
  			<tr>
  				<th>CustomerID</th>
+ 				<th>OrderID</th>
  				<th>Table No.</th>
  				<th>Total Guests</th>
  				<th>Total Orders</th>
  				<th>Date(first ordered)</th>
+ 				<th>Payment Status</th>
  				<th>Action</th>
  			</tr>
  		</tfoot>
  	</table>
  </div>
+
+
+ <!-- end -->

@@ -11,6 +11,11 @@
 								<li class="<?php echo ($title == 'Dashboard' ? "active" : "")?>">
 									<a href="dashboard.php?page=1"><i class="fas fa-tachometer-alt" ></i>&nbsp;Dashboard</a>
 								</li>
+								<!--users-->
+								<li class="<?php echo ($title == 'Users' ? "active" : "")?>">
+									<a href="dashboard.php?page=7"><i class="fa fa-users" ></i>&nbsp;Users</a>
+								</li>
+
 								<li class="<?php echo ($title == 'Products CRUD' ? "active" : "")?>">
 									<a href="dashboard.php?page=2"><i class="fas fa-cart-plus" ></i>&nbsp;Product</a>
 								</li>
@@ -25,7 +30,6 @@
 								<li class="<?php echo ($title == 'history' ? "active" : "")?>">
 									<a href="dashboard.php?page=4"><i class="fas fa-history" ></i>&nbsp;Bill History</a>
 								</li>
-								
 
 								<!-- Dropdown
 								<li class="panel panel-default" id="dropdown">

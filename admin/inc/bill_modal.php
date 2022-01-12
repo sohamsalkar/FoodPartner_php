@@ -8,6 +8,17 @@
                     <b>
                         <h2 class="modal-title" id="myModalLabel">Order History for Order No. <?php echo $row['order_id']; ?></h2>
                     </b>
+                    <?php
+                    if ($trArray['p_id'] != "") {
+                        //echo '<b style ="text-align:center;display:block;color:green;"><i class="fa fa-check" aria-hidden="true">' . $trArray['p_id'] . '</i> </b>';
+                    ?>
+                        <img src="../img/paid-5025785_1280.png" height="150px" width="100px">
+                    <?php
+                        echo '<b style ="text-align:center;display:block;color:green;"><i class="fa fa-check" aria-hidden="true">' . $trArray['p_id'] . '</i> </b>';
+                    } else {
+                        echo '<b style ="text-align:center;display:block;color:red;"><i class="fas fa-hourglass"> Pending</i></b>';
+                    }
+                    ?>
                 </center>
             </div>
             <div class="modal-body">
