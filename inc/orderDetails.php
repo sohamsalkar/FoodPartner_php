@@ -4,6 +4,11 @@ $order_id = $_POST['orderId'];
 $output = '';
 //var_dump($_POST);
 ?>
+<div class="row">
+  <div class="col-md-12" style="padding: 20px;">
+    <a href="#" id="my_prod1" class="btn btn-info"><i class="fas fa-arrow-circle-left"></i> Back</a>
+  </div>
+</div>
 <div class="col-md-12">
   <h4 class="page-header"><i class="fas fa-utensils"></i>&nbsp; Your Order Details for order no:<?php echo $order_id ?></h4><br />
 
@@ -82,3 +87,4 @@ $output = '';
       </table>
     </div>
 </div>
+<?php include "jquery.php"; ?>

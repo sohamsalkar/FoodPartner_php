@@ -1,6 +1,11 @@
 <?php
 include('config/config.php');
 ?>
+<div class="row">
+  <div class="col-md-12" style="padding: 20px;">
+    <a href="index.php" class="btn btn-info"><i class="fas fa-arrow-circle-left"></i> Back</a>
+  </div>
+</div>
 <div class="table-responsive" id="orders">
   <table class="table table-bordered table-striped">
     <thead>

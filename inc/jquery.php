@@ -40,6 +40,25 @@
 			e.preventDefault();
 		});
 
+		$('#my_prod1').on('click', function(e) {
+
+			//alert(query);
+			$.ajax({
+				url: "inc/my_orders.php",
+				method: "POST",
+				success: function(data) {
+
+					$('#my_orders_result').html(data);
+					$('#main_section').fadeOut();
+
+
+				}
+			});
+
+			e.preventDefault();
+		});
+
+
 
 		$('#my_prod').on('click', function(e) {
 
