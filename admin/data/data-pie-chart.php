@@ -38,8 +38,8 @@ $rows['name'] = 'Revenue';
 foreach($pd as $key=>$value) {
   $rows['data'][] = array($key, $pd[$key]);
 }
-$rslt = array();
-array_push($rslt, $rows);
-print json_encode($rslt, JSON_NUMERIC_CHECK);
+$reslt = array();
+array_push($reslt, $rows);
+print json_encode($reslt, JSON_NUMERIC_CHECK);
 
 mysqli_close($conn);

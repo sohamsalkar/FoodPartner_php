@@ -1,9 +1,17 @@
-<!--start-->
 <div>
-	<?php include('./pie-chart_1.php') ?>
+<table>
+	<tr>
+		<th></th>
+		<th></th>
+	</tr>
+	<tr>
+		<td ><?php include('./pie-semi-circle.php') ?></td>
+		<td style="width: 100%;"><?php include('./pie-chart_1.php') ?></td>
+	</tr>
+</table>
+	
+	
 </div>
-
-<!--end-->
 
 <?php
 $stmt = $conn->prepare("SELECT u_id FROM users");
@@ -212,3 +220,9 @@ $stmt->close();
 		</div>
 	</div>
 </div>
+
+<!--start-->
+
+
+
+<!--end-->
