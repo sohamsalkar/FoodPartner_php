@@ -11,7 +11,7 @@
 	}
 </style>
 <?php
-$stmt = $conn->prepare("SELECT gid FROM guest");
+$stmt = $conn->prepare("SELECT u_id FROM users");
 $stmt->execute();
 $stmt->store_result();
 
@@ -44,7 +44,7 @@ if ($stmt->num_rows > 0) {
 			</div>
 		</div>
 <?php
-	}
+	} 
 }
 $stmt->close();
 ?>

@@ -11,7 +11,7 @@ if(!empty(USER_TIME_ZONE) && USER_TIME_ZONE == 'Europe/Rome')
 	setlocale(LC_TIME, "it_IT.utf8");
 }
 
-$current_date = date('d-m-Y');
+$current_date = date('Y-m-d');
 $current_time = date('H:i:s');
 
 $currency= "&#8377;";

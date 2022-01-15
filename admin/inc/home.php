@@ -1,5 +1,5 @@
 <?php
-$stmt = $conn->prepare("SELECT gid FROM guest");
+$stmt = $conn->prepare("SELECT u_id FROM users");
 $stmt->execute();
 $stmt->store_result();
 
@@ -8,7 +8,7 @@ if ($stmt->num_rows > 0) {
 } else {
 	//reset apply
 
-	$stmt = $conn->prepare("SELECT purchaseid FROM purchase");
+	$stmt = $conn->prepare("SELECT order_id FROM orders");
 	$stmt->execute();
 	$stmt->store_result();
 
@@ -31,7 +31,7 @@ if ($stmt->num_rows > 0) {
 
 
 <?php
-	}
+	} 
 }
 $stmt->close();
 ?>
@@ -140,7 +140,7 @@ $stmt->close();
 	<div class="col-md-3">
 		<div class="notice notice-warning">
 			<strong><i class="fas fa-users"></i>
-				<?php $stmt = $conn->prepare("SELECT gid FROM guest");
+				<?php $stmt = $conn->prepare("SELECT u_id FROM users");
 
 				$stmt->execute();
 				$stmt->store_result();
@@ -159,15 +159,14 @@ $stmt->close();
 		<div class="notice notice-success">
 			<strong><i class="fas fa-rupee-sign"></i>
 				<?php
-				$stmt = $conn->prepare("SELECT SUM(purchase.quantity * product.price) AS Amount
-									        FROM product 
-									INNER JOIN purchase ON purchase.productid = product.productid");
+				$stmt = $conn->prepare("SELECT SUM(total_price) from `orders` where `status`=0;");
 
 				$stmt->execute();
 				$result = $stmt->get_result();
 				$data = $result->fetch_assoc();
-				if ($data['Amount'] > 0) {
-					echo $data['Amount'];
+				//print_r($data);
+				if ($data['SUM(total_price)'] > 0) {
+					echo $data['SUM(total_price)'];
 				} else {
 					echo '0.00';
 				}
@@ -183,17 +182,19 @@ $stmt->close();
 		<div class="notice notice-success">
 			<strong><i class="fas fa-rupee-sign"></i>
 				<?php
-				$stmt = $conn->prepare("SELECT SUM(purchase.quantity * product.price) AS Amount
-										FROM product 
-										INNER JOIN purchase ON 
-										purchase.productid = product.productid 
-										AND purchase.date_purchase BETWEEN '" . $current_date . "' AND '" . $current_date . "'");
+				$timestamp =$current_date.' 00:00:00';
+				$timestamp1 =$current_date.' 23:59:59';
+				//echo $timestamp , $timestamp1;
+				$stmt = $conn->prepare("SELECT SUM(total_price) FROM `orders` 
+										Where `status`=0
+										AND `date` BETWEEN '" . $timestamp . "' AND '" . $timestamp1 . "'");
 
 				$stmt->execute();
 				$result = $stmt->get_result();
 				$data = $result->fetch_assoc();
-				if ($data['Amount'] > 0) {
-					echo $data['Amount'];
+				//print_r($data);
+				if ($data['SUM(total_price)'] > 0) {
+					echo $data['SUM(total_price)'];
 				} else {
 					echo '0.00';
 				}
