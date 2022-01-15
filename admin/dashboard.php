@@ -16,7 +16,7 @@ if (!isset($_SESSION["admin"])) {
 
 	<body>
 		<?php include "inc/navbar.php"; ?>
-		<div class="container-fluid" style="max-width: 1500px;margin: 0 auto;">
+		<div class="container-fluid" style="max-width: 2000px;margin: 0 auto;">
 
 
 			<!-- Navbar -->

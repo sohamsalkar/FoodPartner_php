@@ -1,3 +1,10 @@
+<!--start-->
+<div>
+	<?php include('./pie-chart_1.php') ?>
+</div>
+
+<!--end-->
+
 <?php
 $stmt = $conn->prepare("SELECT u_id FROM users");
 $stmt->execute();
@@ -31,7 +38,7 @@ if ($stmt->num_rows > 0) {
 
 
 <?php
-	} 
+	}
 }
 $stmt->close();
 ?>
@@ -182,8 +189,8 @@ $stmt->close();
 		<div class="notice notice-success">
 			<strong><i class="fas fa-rupee-sign"></i>
 				<?php
-				$timestamp =$current_date.' 00:00:00';
-				$timestamp1 =$current_date.' 23:59:59';
+				$timestamp = $current_date . ' 00:00:00';
+				$timestamp1 = $current_date . ' 23:59:59';
 				//echo $timestamp , $timestamp1;
 				$stmt = $conn->prepare("SELECT SUM(total_price) FROM `orders` 
 										Where `status`=0
