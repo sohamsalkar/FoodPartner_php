@@ -73,17 +73,7 @@ if(isset($_SESSION["admin"])){
 
                                 <div class="form-group">
                                     <div class="col-md-12 control">
-                                        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-											
-                                         	Developed by
-											<a href="http://navbro.online" target="_blank">
-												 ( Navbro
-											</a>|
-											 <a href="mailto:web.dev.nav@gmail.com">
-												 Mail )
-											</a>
-											
-                                        </div>
+                                        
                                     </div>
                                 </div>    
                             </form>     

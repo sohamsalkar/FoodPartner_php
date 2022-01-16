@@ -1,17 +1,6 @@
-<div>
-<table>
-	<tr>
-		<th></th>
-		<th></th>
-	</tr>
-	<tr>
-		<td ><?php include('./pie-semi-circle.php') ?></td>
-		<td style="width: 100%;"><?php include('./pie-chart_1.php') ?></td>
-	</tr>
-</table>
-	
-	
-</div>
+
+
+
 
 <?php
 $stmt = $conn->prepare("SELECT u_id FROM users");
@@ -223,6 +212,19 @@ $stmt->close();
 
 <!--start-->
 
+<div>
+	<?php include('./bubblechart.php'); ?>
+	<table>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+		<tr>
+			<td><?php include('./pie-semi-circle.php') ?></td>
+			<td style="width: 100%;"><?php include('./pie-chart_1.php') ?></td>
+		</tr>
+	</table>
+</div>
 
 
 <!--end-->
