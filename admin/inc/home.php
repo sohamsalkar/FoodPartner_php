@@ -1,7 +1,3 @@
-
-
-
-
 <?php
 $stmt = $conn->prepare("SELECT u_id FROM users");
 $stmt->execute();
@@ -213,7 +209,8 @@ $stmt->close();
 <!--start-->
 
 <div>
-	<?php include('./bubblechart.php'); ?>
+	<?php include('./basic-colm-ajax.php'); ?>
+	<!-- //include('./basic-line.php'); ?> -->
 	<table>
 		<tr>
 			<th></th>
@@ -224,6 +221,8 @@ $stmt->close();
 			<td style="width: 100%;"><?php include('./pie-chart_1.php') ?></td>
 		</tr>
 	</table>
+	<?php include('./bubblechart.php'); ?>
+
 </div>
 
 
