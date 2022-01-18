@@ -13,7 +13,6 @@ if (isset($_POST['submit'])) //if submit btn is pressed
       empty($_POST['email']) ||
       empty($_POST['phone']) ||
       empty($_POST['password']) ||
-      empty($_POST['cpassword']) ||
       empty($_POST['cpassword'])
    ) {
       $message = "All fields must be Required!";
@@ -44,7 +43,7 @@ if (isset($_POST['submit'])) //if submit btn is pressed
       } else {
 
          //inserting values into db
-         $mql = "INSERT INTO users(username,f_name,l_name,email,phone,password,address) VALUES('" . $_POST['username'] . "','" . $_POST['firstname'] . "','" . $_POST['lastname'] . "','" . $_POST['email'] . "','" . $_POST['phone'] . "','" . md5($_POST['password']) . "','" . $_POST['address'] . "')";
+         $mql = "INSERT INTO users(username,f_name,l_name,email,phone,password) VALUES('" . $_POST['username'] . "','" . $_POST['firstname'] . "','" . $_POST['lastname'] . "','" . $_POST['email'] . "','" . $_POST['phone'] . "','" . md5($_POST['password']) . "')";
          mysqli_query($conn, $mql);
          $success = "Account Created successfully! <p>You will be redirected in <span id='counter'>5</span> second(s).</p>
 														<script type='text/javascript'>
@@ -78,12 +77,12 @@ if (isset($_POST['submit'])) //if submit btn is pressed
    <meta name="description" content="">
    <meta name="author" content="">
    <link rel="icon" href="#">
-   <title>Starter Template for Bootstrap</title>
+   <title>FoodPartner</title>
    <!-- Bootstrap core CSS -->
    <link href="css/bootstrap.min.css" rel="stylesheet">
-   <link href="css/font-awesome.min.css" rel="stylesheet">
-   <link href="css/animsition.min.css" rel="stylesheet">
-   <link href="css/animate.css" rel="stylesheet">
+   <!-- <link href="css/font-awesome.min.css" rel="stylesheet"> -->
+   <!-- <link href="css/animsition.min.css" rel="stylesheet">
+   <link href="css/animate.css" rel="stylesheet"> -->
    <!-- Custom styles for this template -->
    <link href="css/style.css" rel="stylesheet">
 </head>
@@ -92,6 +91,7 @@ if (isset($_POST['submit'])) //if submit btn is pressed
 
    
    <div class="page-wrapper">
+      
       <div class="breadcrumb">
          <div class="container">
             <ul>
@@ -104,6 +104,7 @@ if (isset($_POST['submit'])) //if submit btn is pressed
                   </a></li>
 
             </ul>
+         <h1 style="text-align: center;">Register</h1>
          </div>
       </div>
       <section class="contact-page inner-page">
@@ -117,6 +118,7 @@ if (isset($_POST['submit'])) //if submit btn is pressed
                         <form action="" method="post">
                            <div class="row">
                               <div class="form-group col-sm-12">
+                              <h3 style="color: #f30; text-align: center; padding-bottom: 10px;">Create a new account</h3>
                                  <label for="exampleInputEmail1">User-Name</label>
                                  <input class="form-control" type="text" name="username" id="example-text-input" placeholder="UserName">
                               </div>
@@ -141,13 +143,13 @@ if (isset($_POST['submit'])) //if submit btn is pressed
                                  <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
                               </div>
                               <div class="form-group col-sm-6">
-                                 <label for="exampleInputPassword1">Repeat password</label>
+                                 <label for="exampleInputPassword1">Confirm password</label>
                                  <input type="password" class="form-control" name="cpassword" id="exampleInputPassword2" placeholder="Password">
                               </div>
-                              <div class="form-group col-sm-12">
+                              <!-- <div class="form-group col-sm-12">
                                  <label for="exampleTextarea">Delivery Address</label>
                                  <textarea class="form-control" id="exampleTextarea" name="address" rows="3"></textarea>
-                              </div>
+                              </div> -->
 
                            </div>
 
@@ -157,23 +159,13 @@ if (isset($_POST['submit'])) //if submit btn is pressed
                               </div>
                            </div>
                         </form>
+                     <div style="text-align: center;">Account Exist ?<a style="padding-left: 5px;" href="login.php" style="color:#f30;">Login</a></div>
 
                      </div>
                      <!-- end: Widget -->
                   </div>
                   <!-- /REGISTER -->
                </div>
-
-               <!-- Bootstrap core JavaScript
-    ================================================== -->
-               <script src="js/jquery.min.js"></script>
-               <script src="js/tether.min.js"></script>
-               <script src="js/bootstrap.min.js"></script>
-               <script src="js/animsition.min.js"></script>
-               <script src="js/bootstrap-slider.min.js"></script>
-               <script src="js/jquery.isotope.min.js"></script>
-               <script src="js/headroom.js"></script>
-               <script src="js/foodpicky.min.js"></script>
 </body>
 
 </html>

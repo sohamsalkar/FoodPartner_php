@@ -51,7 +51,7 @@
  						<?php
 							$trquery = mysqli_query($conn, "SELECT * FROM `transactions` where order_id=" . $row['order_id'] . "; ");
 							$trArray = mysqli_fetch_array($trquery);
-							if ($trArray['p_id'] != "") {
+							if (isset($trArray['p_id']) != "") {
 								echo '<b style ="text-align:center;display:block;color:green;"><i class="fa fa-check" aria-hidden="true">' . $trArray['p_id'] . '</i> </b>';
 							} else {
 								echo '<b style ="text-align:center;display:block;color:red;"><i class="fas fa-hourglass"> Pending</i></b>';
