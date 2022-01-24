@@ -30,7 +30,7 @@
 				},
 				success: function(data) {
 
-					$('#result').html(data);
+					$('#my_orders_result').html(data);
 					$('#main_section').fadeOut();
 
 
@@ -78,21 +78,22 @@
 			e.preventDefault();
 		});
 
-	});
+		$('#payment').on('click', function(e) {
+			// var query = $("#search_text").val();
+			//alert(query);
+			$.ajax({
+				url: "inc/check_pay.php",
+				method: "POST",
+				success: function(data) {
 
-	$('#payment').on('click', function(e) {
-		// var query = $("#search_text").val();
-		//alert(query);
-		$.ajax({
-			url: "inc/check_pay.php",
-			method: "POST",
-			success: function(data) {
-				$('#result').html(data);
-				$('#main_section').fadeOut();
-				// $('#checkout').fadeOut();
-			}
+					$('#my_orders_result').html(data);
+					$('#main_section').fadeOut();
+
+
+				}
+			});
+			e.preventDefault();
 		});
-		e.preventDefault();
-	});
 
+	});
 </script>

@@ -56,24 +56,7 @@
 								echo $_SESSION['order_id'];
 								$_SESSION['current_order'] = 1;
 								$oid->close();
-							} else {
-								//echo "inside update";
-								$statusCheckQuery = mysqli_query($conn, "SELECT * from `orders` where `order_id`=$_SESSION[order_id]");
-								$statusArray = mysqli_fetch_array($statusCheckQuery);
-								$status = $statusArray['status'];
-								$oid =  mysqli_query($conn, "SELECT `list`,`total_price` from `orders` where `order_id`='" . $_SESSION['order_id'] . "';");
-								$result = mysqli_fetch_array($oid);
-								$l = $result['list'] . $list;
-								$p = $result['total_price'] + $totalprice;
-								$stmt = mysqli_query($conn, "UPDATE `orders` SET  `seen`=0, `list`='$l',  `total_price`=$p WHERE `order_id`=$_SESSION[order_id]");
-								$oid->close();
-							}
-							if ($stmt) {
-
-								if ($shown == 0) //show msg only once
-								{
-									unset($_SESSION['shopping_cart']);
-									$custQuery = mysqli_query($conn, "SELECT * FROM `users` where u_id=$g_code");
+								$custQuery = mysqli_query($conn, "SELECT * FROM `users` where u_id=$g_code");
 									$custArray = mysqli_fetch_array($custQuery);
 									$data = [
 										'phone' => '+91'.$custArray['phone'], // Receivers phone
@@ -93,6 +76,23 @@
 									// Send a request
 									$result = file_get_contents($url, false, $options);
 									//print_r($result);
+							} else {
+								//echo "inside update";
+								$statusCheckQuery = mysqli_query($conn, "SELECT * from `orders` where `order_id`=$_SESSION[order_id]");
+								$statusArray = mysqli_fetch_array($statusCheckQuery);
+								$status = $statusArray['status'];
+								$oid =  mysqli_query($conn, "SELECT `list`,`total_price` from `orders` where `order_id`='" . $_SESSION['order_id'] . "';");
+								$result = mysqli_fetch_array($oid);
+								$l = $result['list'] . $list;
+								$p = $result['total_price'] + $totalprice;
+								$stmt = mysqli_query($conn, "UPDATE `orders` SET  `seen`=0, `list`='$l',  `total_price`=$p WHERE `order_id`=$_SESSION[order_id]");
+								$oid->close();
+							}
+							if ($stmt) {
+
+								if ($shown == 0) //show msg only once
+								{
+									unset($_SESSION['shopping_cart']);
 									header('location:../checkout.php?er=false');
 									$shown = 1;
 								}

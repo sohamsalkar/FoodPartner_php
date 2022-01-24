@@ -73,7 +73,7 @@ include('config/config.php');
             // }
             // $i++;
           // }
-          $gst = (number_format($total_price, 2)*6.5/100);
+          $gst = ((int)($total_price)*6.5/100);
           echo ' <tr>  
           <td colspan="3" align="right"><strong>GST : 6.5 %</strong></td>  
               <td align="right" class="text-success"><strong>' . $currency . ' ' . $gst . '</strong></td>  
@@ -81,7 +81,7 @@ include('config/config.php');
           </tr>';
           echo ' <tr>  
                                                 <td colspan="3" align="right"><strong>Total</strong></td>  
-                                                    <td align="right" class="text-success"><strong>' . $currency . ' ' . (number_format($total_price, 2)+$gst) . '</strong></td>  
+                                                    <td align="right" class="text-success"><strong>' . $currency . ' ' . ((int)($total_price)+$gst) . '</strong></td>  
                                                     
                                                 </tr>';
         } else {
