@@ -6,14 +6,14 @@
 <!--<script type="text/javascript" src="ajax/cancel_orders.js"></script>-->
 
 <!--google tanslater-->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function googleTranslateElementInit() {
 		new google.translate.TranslateElement({
 			pageLanguage: 'nl'
 		}, 'google_translate_element');
 	}
 </script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
 
 <script>
 	$(document).ready(function() {
@@ -79,4 +79,20 @@
 		});
 
 	});
+
+	$('#payment').on('click', function(e) {
+		// var query = $("#search_text").val();
+		//alert(query);
+		$.ajax({
+			url: "inc/check_pay.php",
+			method: "POST",
+			success: function(data) {
+				$('#result').html(data);
+				$('#main_section').fadeOut();
+				// $('#checkout').fadeOut();
+			}
+		});
+		e.preventDefault();
+	});
+
 </script>

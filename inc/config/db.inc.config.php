@@ -31,3 +31,4 @@ define('APP_V', 'V1');
 
 define('AUTHOR_FOOTER_MAIL', 'salkarsoham2@gmail.com');
 define('AUTHOR_FOOTER_URL', 'https://www.linkedin.com/in/sohamsalkar/');
+?>

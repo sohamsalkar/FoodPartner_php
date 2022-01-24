@@ -24,8 +24,8 @@ include('config/config.php');
       ?>
       <tr>
         <td class="text-center"><?php echo $srno ?></td>
-        <td class="text-center"><?php echo $orderrow['date']; ?></td>
-        <td class="text-center"><?php echo $orderrow['total_price']; ?></td>
+        <td class="text-center"><?php echo date($orderrow['date']); ?></td>
+        <td class="text-center"><?php echo ' &#8377; '.$orderrow['total_price']; ?></td>
         <td class="text-center"><a class="my_orderDetail text-decoration-none" data-id=<?php echo $orderrow['order_id'] ?> ><button class="btn btn-success">VIEW</button></a></td>
       </tr>
       <?php

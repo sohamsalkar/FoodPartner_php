@@ -1,22 +1,22 @@
 <?php
 include('config/config.php');
-$order_id = $_POST['orderId'];
-$output = '';
-//var_dump($_POST);
 ?>
 <div class="row">
   <div class="col-md-12" style="padding: 20px;">
-    <a href="#" id="my_prod1" class="btn btn-info"><i class="fas fa-arrow-circle-left"></i> Back</a>
+    <a href="index.php"  class="btn btn-info"><i class="fas fa-arrow-circle-left"></i> Back</a>
   </div>
 </div>
 <div class="col-md-12">
-  <h4 class="page-header"><i class="fas fa-utensils"></i>&nbsp; Your Order Details for order no:<?php echo $order_id ?></h4><br />
+  <!-- <h4 class="page-header"><i class="fas fa-utensils"></i>&nbsp; Your Order Details for order no:<?php //echo $order_id ?></h4><br /> -->
 
   <?php
-  $stmt = mysqli_query($conn, "SELECT `list` FROM `orders` WHERE order_id=$order_id;");
+  $oid = $_SESSION['order_id'];
+  $stmt = mysqli_query($conn, "SELECT `list` FROM `orders` where order_id=$oid and status=1 ");
   $list = mysqli_fetch_array($stmt);
+//   print_r($list);
   if ($list[0] != null) {
   ?>
+
     <!--<h5><a href="#" data-toggle="modal" data-target="#modal_cancel"><i class="fas fa-trash-alt text-danger"></i>Request for order cancellation?</a></h5>-->
     <div class="table-responsive" id="order_table">
       <table class="table table-bordered table-striped">
@@ -93,5 +93,18 @@ $output = '';
         </tbody>
       </table>
     </div>
+    <div class="col-md-12">
+      <h4 class="page-header">Payment :</h4>
+
+      <!-- <a class="btn btn-success" id="cash" href="" style="margin-right: 10%;">
+ 			<span class="glyphicon glyphicon-user"></span>
+ 			Pay in Cash
+    </a> -->
+ 		<a class="btn btn-success" id="online" href="inc/pay.php?oid=<?php echo $_SESSION['order_id'];?>">
+ 			<span class="glyphicon glyphicon-credit-card"></span>
+ 			Pay Online
+    </a>
+
+  
+    </div>
 </div>
-<?php include "jquery.php"; ?>
