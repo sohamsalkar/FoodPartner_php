@@ -57,25 +57,25 @@
 								$_SESSION['current_order'] = 1;
 								$oid->close();
 								$custQuery = mysqli_query($conn, "SELECT * FROM `users` where u_id=$g_code");
-									$custArray = mysqli_fetch_array($custQuery);
-									$data = [
-										'phone' => '+91'.$custArray['phone'], // Receivers phone
-										'body' => 'Hello, '.$custArray['f_name'].' '.$custArray['l_name']. ' your order no is : ' . $_SESSION['order_id'], // Message
-									];
-									$json = json_encode($data); // Encode data to JSON
-									// URL for request POST /message
-									$url = 'https://api.chat-api.com/instance399014/message?token=oxljtmb1kd1ukla8';
-									// Make a POST request
-									$options = stream_context_create([
-										'http' => [
-											'method'  => 'POST',
-											'header'  => 'Content-type: application/json',
-											'content' => $json
-										]
-									]);
-									// Send a request
-									$result = file_get_contents($url, false, $options);
-									//print_r($result);
+								$custArray = mysqli_fetch_array($custQuery);
+								$data = [
+									'phone' => '+91' . $custArray['phone'], // Receivers phone
+									'body' => '```Hello,``` *' . $custArray['f_name'] . ' ' . $custArray['l_name'] . '* ```your order no is :``` *' . $_SESSION['order_id'].'*', // Message
+								];
+								$json = json_encode($data); // Encode data to JSON
+								// URL for request POST /message
+								$url = 'https://api.chat-api.com/instance399014/message?token=oxljtmb1kd1ukla8';
+								// Make a POST request
+								$options = stream_context_create([
+									'http' => [
+										'method'  => 'POST',
+										'header'  => 'Content-type: application/json',
+										'content' => $json
+									]
+								]);
+								// Send a request
+								$result = file_get_contents($url, false, $options);
+								//print_r($result);
 							} else {
 								//echo "inside update";
 								$statusCheckQuery = mysqli_query($conn, "SELECT * from `orders` where `order_id`=$_SESSION[order_id]");

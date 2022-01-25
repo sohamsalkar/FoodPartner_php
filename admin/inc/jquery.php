@@ -27,7 +27,7 @@
       $(document).ready(function() {
         var table = $('#sales').DataTable( {
              columnDefs: [{ 'targets': 0, type: 'date-euro' }],
-             order: [0, 'desc']
+             order: [5, 'desc']
         } );
     } );  
 	
@@ -35,7 +35,7 @@
         lengthChange: false,
         buttons: [ 'copy', 'excel', 'pdf', 'colvis' ],
         columnDefs: [ { type: 'date', 'targets': [2] } ],
-        order: [[ 2, "desc" ]] 
+        order: [[ 5, "desc" ]] 
     } );
  
     bill.buttons().container()

@@ -11,8 +11,25 @@ $custQuery = mysqli_query($conn, "SELECT * FROM `users` where u_id=$cid");
 $custArray = mysqli_fetch_array($custQuery);
 $query = "INSERT INTO `transactions`(`p_id`, `cust_id`, `order_id`, `amount`, `payment_mode`) Values ('$pid',$cid,$oid," . $orArray['total_price'] . ",'creditcard')";
 $run = mysqli_query($conn, $query);
-
+$data = [
+	'phone' => '+91' . $custArray['phone'], // Receivers phone
+	'body' => '```Hello,``` *' . $custArray['f_name'] . ' ' . $custArray['l_name'] . '* ```your payment of``` *Rs. '.$orArray['total_price'].'* ```for order no: ``` *' . $_SESSION['order_id'].'* ```has been received..!!```', // Message
+];
+$json = json_encode($data); // Encode data to JSON
+// URL for request POST /message
+$url = 'https://api.chat-api.com/instance399014/message?token=oxljtmb1kd1ukla8';
+// Make a POST request
+$options = stream_context_create([
+	'http' => [
+		'method'  => 'POST',
+		'header'  => 'Content-type: application/json',
+		'content' => $json
+	]
+]);
+// Send a request
+$result = file_get_contents($url, false, $options);
 if (mysqli_query($conn, "UPDATE `orders` SET  `seen`=1, `status`=0 WHERE `order_id`=$oid")) {
+	
 	unset($_SESSION['order_id']);
 	unset($_SESSION['current_order']);
 }
