@@ -57,5 +57,3 @@ if(isset($_POST["action"]))
 		unset($_SESSION["shopping_cart"]);
 	}
 }
-
-?>

@@ -190,10 +190,10 @@ include('inc/header.php');
 
 	</div>
 
-		<?php include "inc/footer.php"; ?>
+	<?php include "inc/footer.php"; ?>
 
 
-		<!--
+	<!--
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#checkAll").click(function(){
@@ -202,15 +202,15 @@ include('inc/header.php');
 	});
 </script>-->
 
-		<?php include "inc/jquery.php"; ?>
-		<?php include "inc/checkout_timer.php"; ?>
+	<?php include "inc/jquery.php"; ?>
+	<?php include "inc/checkout_timer.php"; ?>
 
 
-		<script type="text/javascript">
-			$(window).on('load', function() {
-				$('#session_init').modal('show');
-			});
-		</script>
+	<script type="text/javascript">
+		$(window).on('load', function() {
+			$('#session_init').modal('show');
+		});
+	</script>
 
 
 </body>

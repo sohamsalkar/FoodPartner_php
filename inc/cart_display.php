@@ -1,5 +1,5 @@
  <h4 class="page-header">
- 	<span class="glyphicon glyphicon-shopping-cart"></span>&nbsp; Shopping Cart
+ 	<span class="glyphicon glyphicon-shopping-cart"></span>&nbsp; Your Cart
  </h4>
  <br />
 
