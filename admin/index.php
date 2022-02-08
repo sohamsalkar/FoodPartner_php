@@ -26,7 +26,7 @@ if(isset($_SESSION["admin"])){
             <div class="panel panel-info" >
                
                     <div class="panel-heading">
-                        <div class="panel-title">Adminstrator login</div>
+                        <div class="panel-title">Manager login</div>
                        
                     </div>     
 

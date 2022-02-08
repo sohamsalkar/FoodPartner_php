@@ -101,7 +101,7 @@ $stmt->close();
 
 							<td class="">
 
-								<img id="img_unread<?php echo $drow['order_id']; ?>" <?php echo ($drow['seen'] == 1) ? "src='../img/read.png'" : "src='../img/bell.png'"; ?> style="height: 35px;width: 35px;" />
+								<img id="img_unread<?php echo $drow['order_id']."-".$str_arr[$i]."-".$str_arr[$i+1]; ?>" <?php echo ($drow['seen'] == 1) ? "src='../img/read.png'" : "src='../img/bell.png'"; ?> style="height: 35px;width: 35px;" />
 
 							</td>
 
@@ -120,7 +120,7 @@ $stmt->close();
 
 								<div class="row" style="max-width: 170px;">
 									<div class="col-md-6">
-										<a id="<?php echo $drow['order_id']; ?>" href="#details<?php echo $drow['order_id']."-".$str_arr[$i]."-".$str_arr[$i+1]; ?>" data-toggle="modal" class="btn btn-primary btn-sm">
+										<a id="<?php echo $drow['order_id']."-".$str_arr[$i]."-".$str_arr[$i+1]; ?>" href="#details<?php echo $drow['order_id']."-".$str_arr[$i]."-".$str_arr[$i+1]; ?>" data-toggle="modal" class="btn btn-primary btn-sm">
 											<span class="fas fa-eye"></span> details
 										</a>
 									</div>

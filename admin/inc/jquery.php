@@ -27,7 +27,7 @@
       $(document).ready(function() {
         var table = $('#sales').DataTable( {
              columnDefs: [{ 'targets': 0, type: 'date-euro' }],
-             order: [5, 'desc']
+             order: [6, 'desc']
         } );
     } );  
 	

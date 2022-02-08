@@ -31,6 +31,10 @@
 									<a href="dashboard.php?page=4"><i class="fas fa-history" ></i>&nbsp;Bill History</a>
 								</li>
 
+								<li class="<?php echo ($title == 'chef' ? "active" : "")?>">
+									<a href="dashboard.php?page=8"><i class="fas fa-history" ></i>&nbsp;Chef Section</a>
+								</li>
+
 								<!-- Dropdown
 								<li class="panel panel-default" id="dropdown">
 									<a data-toggle="collapse" href="#dropdown-lvl1">

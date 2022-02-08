@@ -47,6 +47,12 @@
 			$content = "inc/users.php";
 			break;
 
+		case '8':
+			$title = 'Chef';
+			$icon = '<i class="fas fa-users"></i>';
+			$content = "inc/chef.php";
+			break;
+
 		default:
 			$title = 'Dashboard';
 			$icon = '<i class="fas fa-tachometer-alt"></i>';

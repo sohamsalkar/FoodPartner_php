@@ -181,6 +181,34 @@ if (!isset($_SESSION["admin"])) {
 
 					});
 				});
+
+				$(document).ready(function() {
+					$("#chefdata a").click(function() {
+
+						var purchase_id1 = this.id;
+						console.log(purchase_id1);
+
+						$.ajax({
+							url: "inc/chef_process.php",
+							method: "POST",
+							data: {
+								purchase_id1
+							},
+							success: function(data) {
+
+								//$('#rep').html(data);
+								$("#chefdata tbody #" + purchase_id1).addClass("order_read").removeClass("order_unread");
+								//add or remove the read_unread class
+
+
+								//replacing img source 
+								$('#img_unread' + purchase_id1).attr('src', '../img/read.png');
+
+							}
+						});
+
+					});
+				});
 			</script>
 
 
