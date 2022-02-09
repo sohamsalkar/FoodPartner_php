@@ -27,7 +27,7 @@ if (!file_exists('inc/config/db.inc.config.php')) {
 
 
         <img src="img/foodhand.png" class="img-responsive" style="margin-left: auto;margin-right: auto;width: auto;max-height: 300px; " />
-        <h1>Thank you for your order! <br /> <small>Your dish is being prepared.</small></h1>
+        <h1>Thank you for your order! <br /> <small>Wait for the chef confirmation.</small></h1>
 
         <small style="padding:10px;background:#ddd;color:#7f7f7f;border-radius:5px;">User ID <?php echo $_SESSION['CODE']; ?></small>
         <a href="index.php" class="btn btn-success"><i class="fas fa-arrow-circle-left"></i> Back to Menu</a>

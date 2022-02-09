@@ -18,7 +18,7 @@
         </thead>
         <tbody>
             <?php
-            $sql = "SELECT * FROM orders where chef_update!=4 and chef_update!=3 ORDER BY `date` DESC";
+            $sql = "SELECT * FROM orders where chef_update!=4 ORDER BY `date` DESC";
 
             $query = $conn->query($sql);
             while ($row = $query->fetch_array()) {
