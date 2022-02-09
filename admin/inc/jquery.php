@@ -6,7 +6,8 @@
 <script src="inc/extra/main.js"></script>
 
 <!--Latest compiled and minified CSS of switch toggle -->
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script><!--https://www.bootstraptoggle.com/-->   
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<!--https://www.bootstraptoggle.com/-->
 
 <!--Datatables-->
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
@@ -22,38 +23,33 @@
 
 
 <script>
-	$(document).ready(function() {
+    $(document).ready(function() {
 
-      $(document).ready(function() {
-        var table = $('#sales').DataTable( {
-             columnDefs: [{ 'targets': 0, type: 'date-euro' }],
-             order: [6, 'desc']
-        } );
-    } );  
-	
-     var bill = $('#bill').DataTable( {
-        lengthChange: false,
-        buttons: [ 'copy', 'excel', 'pdf', 'colvis' ],
-        columnDefs: [ { type: 'date', 'targets': [2] } ],
-        order: [[ 5, "desc" ]] 
-    } );
- 
-    bill.buttons().container()
-        .appendTo( '#bill_wrapper .col-sm-6:eq(0)' );
+        $(document).ready(function() {
+            var table = $('#sales').DataTable({
+                columnDefs: [{
+                    'targets': 0,
+                    type: 'date-euro'
+                }],
+                order: [5, 'desc']
+            });
+        });
+
+        var bill = $('#bill').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf', 'colvis'],
+            columnDefs: [{
+                type: 'date',
+                'targets': [2]
+            }],
+            order: [
+                [5, "desc"]
+            ]
+        });
+
+        bill.buttons().container()
+            .appendTo('#bill_wrapper .col-sm-6:eq(0)');
 
 
-} );
-	
-
-	
+    });
 </script>
-
-
-
-
-
-
-
-
-
-

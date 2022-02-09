@@ -1,3 +1,4 @@
+
 <div>
     <?php include('../../inc/config/config.php');
     ?>
@@ -17,7 +18,7 @@
         </thead>
         <tbody>
             <?php
-            $sql = "SELECT * FROM orders";
+            $sql = "SELECT * FROM orders where chef_update!=4 and chef_update!=3 ORDER BY `date` DESC";
 
             $query = $conn->query($sql);
             while ($row = $query->fetch_array()) {
@@ -63,17 +64,38 @@
                     </td>
                     <td> <?php echo $row['date']; ?></td>
                     </td>
-                    <td>
-                        <div class="row" style="max-width: 170px;">
-                            <div class="col-md-6">
-                                <a id="<?php echo $row['order_id']; ?>" class="btn btn-success btn-sm">
+                    <td><div class="row" style="max-width: 170px;">
+                        <?php
+                        if($row['chef_update']==0){
+                            echo '<div class="col-md-6">
+                                <button id="'.$row['order_id'].'" class="btn btn-primary btn-sm" onclick="UpdateStatus(id,2)">
                                     <span class="fas fa-eye"></span> Accept
-                                </a>
-                            </div>
-                            <div class="col-md-2">
-                                <a id="<?php echo $row['order_id']; ?>">
-                                    <button class="btn btn-danger btn-sm" type='submit' name='sAcc' value=0>Reject</button></a>
-                            </div>
+                                </button>
+                            </div>';
+                            echo '<div class="col-md-2">
+                                <button id="'.$row['order_id'].'" class="btn btn-danger btn-sm" onclick="UpdateStatus(id,4)">
+                                    <span class="fas fa-eye"></span> Reject
+                                </button>
+                            </div>';
+                        }
+                        else if($row['chef_update']==2){
+                            echo '<div class="col-md-2">
+                                <button id="'.$row['order_id'].'" class="btn btn-warning btn-sm" onclick="UpdateStatus(id,3)">
+                                    <span class="fas fa-eye"></span> In Progress
+                                </button>
+                            </div>';
+                        }
+                        else {
+                            echo '<div class="col-md-2">
+                                <button id="'.$row['order_id'].'" class="btn btn-success btn-sm">
+                                    <span class="fas fa-eye"></span> Completed
+                                </button>
+                            </div>';
+                        }
+                        ?>
+                        
+                            
+                            
                         </div>
                 </tr>
             <?php

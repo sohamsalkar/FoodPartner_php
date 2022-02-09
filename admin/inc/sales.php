@@ -71,7 +71,7 @@ $stmt->close();
 
 			<?php
 
-			$sql = "SELECT * FROM `orders`;";
+			$sql = "SELECT * FROM `orders` where `chef_update`=3;";
 
 			$dquery = $conn->query($sql);
 

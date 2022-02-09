@@ -1,4 +1,5 @@
 <!-- JavaScript Bundle with Popper -->
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <div class="alert alert-info" role="alert">
 	<i class="fas fa-info-circle"></i> info: Bill history tab helps to see bill of the customer just by entering CustomerID into the search bar below.</br>

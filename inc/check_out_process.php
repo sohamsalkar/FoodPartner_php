@@ -85,7 +85,7 @@
 								$result = mysqli_fetch_array($oid);
 								$l = $result['list'] . $list;
 								$p = $result['total_price'] + $totalprice;
-								$stmt = mysqli_query($conn, "UPDATE `orders` SET  `seen`=0, `list`='$l',  `total_price`=$p WHERE `order_id`=$_SESSION[order_id]");
+								$stmt = mysqli_query($conn, "UPDATE `orders` SET  `chef_seen`=0,seen=0, chef_update=0,`list`='$l',  `total_price`=$p WHERE `order_id`=$_SESSION[order_id]");
 								$oid->close();
 							}
 							if ($stmt) {
