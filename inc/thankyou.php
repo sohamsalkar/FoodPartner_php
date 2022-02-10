@@ -31,7 +31,8 @@ $result = file_get_contents($url, false, $options);
 if (mysqli_query($conn, "UPDATE `orders` SET  `status`=0 WHERE `order_id`=$oid")) {
 	
 	unset($_SESSION['order_id']);
-	unset($_SESSION['current_order']);
+	// unset($_SESSION['current_order']);
+	$_SESSION['current_order']=null;
 }
 ?>
 
