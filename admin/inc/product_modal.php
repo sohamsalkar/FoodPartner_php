@@ -12,18 +12,18 @@
                 <div class="container-fluid">
                     <form method="POST" action="inc/curd/editproduct.php?product=<?php echo $row['productid']; ?>" enctype="multipart/form-data">
                     
-                     <div class="row" style="margin-top:10px;">
+                        <div class="row" style="margin-top:10px;">
                             <div class="form-group" >
-                            <div class="col-md-12">
-								<label class="control-label">Item:</label>
-                                <input type="text" class="form-control" value="<?php echo $row['productname']; ?>" name="pname" required>
+                                <div class="col-md-12">
+                                    <label class="control-label">Item:</label>
+                                    <input type="text" class="form-control" value="<?php echo $row['productname']; ?>" name="pname" required>
+                                </div>
                             </div>
                         </div>
-                    </div>
 						
                 
                         <div class="row" style="margin-top:10px;">
-                               <div class="form-group">
+                            <div class="form-group">
 								<div class="col-md-12">
 									<label class="control-label">Category:</label>
 									<select class="form-control" name="category">
@@ -39,17 +39,33 @@
 											}
 										?>
 									</select>
-								</div>
-							
+								</div>		
+                            </div>
                         </div>
-                    </div>
-                     <!--<div class="form-group">
+                        <div class="row" style="margin-top:10px;">
+                            <div class="form-group">
+								<div class="col-md-12">
+									<label class="control-label">Flavor of the day:</label>
+									<select class="form-control" name="flavour">
+										<option value="None">None</option>
+										<option value="Monday">Monday</option>
+										<option value="Tuesday">Tuesday</option>
+										<option value="Wednesday">Wednesday</option>
+										<option value="Thursday">Thursday</option>
+										<option value="Friday">Friday</option>
+										<option value="Saturday">Saturday</option>
+										<option value="Sunday">Sunday</option>
+									</select>
+								</div>		
+                            </div>
+                        </div>
+                    <!--<div class="form-group">
                         <div class="row">
                             <div class="col-md-3" style="margin-top:7px;">
                                 <label class="control-label">Old price:</label>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" value="<?php echo $row['old_price']; ?>" name="old_price" required>
+                                <input type="text" class="form-control" value="<?php //echo $row['old_price']; ?>" name="old_price" required>
                             </div>
                         </div>
                     </div>-->
