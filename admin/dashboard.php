@@ -189,7 +189,32 @@ if (!isset($_SESSION["admin"])) {
 		}
 		?>
 
+		<script>
+			function UpdateStatus(id,status) {
+				var purchase_id1 = parseInt(id);
+				var stats = parseInt(status);
 
+				$.ajax({
+					url: "inc/chef_process.php",
+					type: "POST",
+					data: {
+						purchase_id1,
+						stats
+					},
+					success: function(data) {
+
+						//$('#rep').html(data);
+						$("#chefdata tbody #" + purchase_id1).addClass("order_read").removeClass("order_unread");
+						//add or remove the read_unread class
+
+
+						//replacing img source 
+						$('#img_unread' + purchase_id1).attr('src', '../img/read.png');
+
+					},
+				});
+			}
+			</script>
 	</body>
 <?php
 } ?>

@@ -5,6 +5,7 @@
 	$pname=mysqli_real_escape_string($conn,$_POST['pname']);
 	$category=mysqli_real_escape_string($conn,$_POST['category']);
 	$price=mysqli_real_escape_string($conn,$_POST['price']);
+	$flavour=mysqli_real_escape_string($conn,$_POST['flavour']);
 	//$old_price=$_POST['old_price'];
 	$desc= mysqli_real_escape_string($conn,$_POST['desc']);
 
@@ -19,7 +20,7 @@
 	$location= $newFilename;
 	}
 	
-	$sql="insert into product(productname,description, categoryid, price, photo) values ('$pname','$desc', '$category', '$price', '$location')";
+	$sql="insert into product(productname,description,special, categoryid, price, photo) values ('$pname','$desc','$flavour', '$category', '$price', '$location')";
 	 $res = $conn->query($sql);
 
 	 if($res)

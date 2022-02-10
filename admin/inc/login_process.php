@@ -21,22 +21,22 @@ if(isset($_POST['username'],$_POST['password'],$_POST['password_encryption']))
               if($password_encryption == 'MD5')
               {
 
-					$stmt = $conn->prepare("SELECT aid,username,password FROM admin_login WHERE username= ? AND password = ?");
+					$stmt = $conn->prepare("SELECT aid,username,password,flag FROM admin_login WHERE username= ? AND password = ?");
                     $password = md5($password);
                     $stmt->bind_param('ss',$username, $password);
 					//OR password = AES_DECRYPT(?,'".PASSWORDS_ENCRYPT_KEY."')
 
                         $stmt->execute();
                         $stmt->store_result();    
-                        $stmt->bind_result($aid, $username, $password);
+                        $stmt->bind_result($aid, $username, $password,$flag);
 
                       if($stmt->num_rows > 0)
                        {
 		  					$stmt->fetch();
-		  					$value  = array('aid' =>$aid,'user' =>$username,'pass'=> $password );
+		  					$value  = array('aid' =>$aid,'user' =>$username,'pass'=> $password,'flag'=>$flag);
 							  //if record found
 								$_SESSION["admin"] = $value['aid'];
-								
+								$_SESSION['flag']=$value['flag'];								
 
       							//if($remember == 1 && !empty($remember))
       							//{
@@ -59,20 +59,20 @@ if(isset($_POST['username'],$_POST['password'],$_POST['password_encryption']))
 					}
 					else if($password_encryption == 'AES')
 					{
-						$stmt = $conn->prepare("SELECT aid,username, AES_DECRYPT(password,'".PASSWORDS_ENCRYPT_KEY."') FROM admin_login WHERE username= ? AND password= AES_ENCRYPT(?,'".PASSWORDS_ENCRYPT_KEY."')");
+						$stmt = $conn->prepare("SELECT aid,username, AES_DECRYPT(password,'".PASSWORDS_ENCRYPT_KEY."'),flag FROM admin_login WHERE username= ? AND password= AES_ENCRYPT(?,'".PASSWORDS_ENCRYPT_KEY."')");
 
 	                    $stmt->bind_param('ss',$username,$password);
 						$stmt->execute();
                         $stmt->store_result();    
-                        $stmt->bind_result($aid, $username, $password);
+                        $stmt->bind_result($aid, $username, $password,$flag);
 
                       if($stmt->num_rows > 0)
                        {
 		  					$stmt->fetch();
-		  					$value  = array('aid' =>$aid,'user' =>$username,'pass'=> $password );
+		  					$value  = array('aid' =>$aid,'user' =>$username,'pass'=> $password,'flag'=>$flag );
 							  //if record found
 								$_SESSION["admin"] = $value['aid'];
-								
+								$_SESSION['flag']=$value['flag'];								
 
       							//if($remember == 1 && !empty($remember))
       							//{
@@ -96,20 +96,20 @@ if(isset($_POST['username'],$_POST['password'],$_POST['password_encryption']))
 					else if($password_encryption == 'TXT')
 					{
 						
-							$stmt = $conn->prepare("SELECT aid,username,password FROM admin_login WHERE username= ? AND password = ?");
+							$stmt = $conn->prepare("SELECT aid,username,password,flag FROM admin_login WHERE username= ? AND password = ?");
 		                    $stmt->bind_param('ss',$username, $password);
 						
 	                        $stmt->execute();
 	                        $stmt->store_result();    
-	                        $stmt->bind_result($aid, $username, $password);
+	                        $stmt->bind_result($aid, $username, $password,$flag);
 
                       if($stmt->num_rows > 0)
                        {
 		  					$stmt->fetch();
-		  					$value  = array('aid' =>$aid,'user' =>$username,'pass'=> $password );
+		  					$value  = array('aid' =>$aid,'user' =>$username,'pass'=> $password,'flag'=>$flag);
 							  //if record found
 								$_SESSION["admin"] = $value['aid'];
-								
+								$_SESSION['flag']=$value['flag'];								
 
       							//if($remember == 1 && !empty($remember))
       							//{

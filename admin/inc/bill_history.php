@@ -21,7 +21,7 @@
  		<tbody>
  			<p id="rep"></p>
  			<?php
-				$sql = "SELECT * FROM orders";
+				$sql = "SELECT * FROM orders where chef_update!=4 and chef_update!=0 ";
 
 				$query = $conn->query($sql);
 				while ($row = $query->fetch_array()) {
