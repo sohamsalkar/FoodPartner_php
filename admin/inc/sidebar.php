@@ -8,6 +8,8 @@
 						<!-- Main Menu -->
 						<div class="side-menu-container">
 							<ul class="nav navbar-nav">
+								<?php if ($_SESSION['flag']==0) {
+								 ?>
 								<li class="<?php echo ($title == 'Dashboard' ? "active" : "")?>">
 									<a href="dashboard.php?page=1"><i class="fas fa-tachometer-alt" ></i>&nbsp;Dashboard</a>
 								</li>
@@ -30,11 +32,12 @@
 								<li class="<?php echo ($title == 'history' ? "active" : "")?>">
 									<a href="dashboard.php?page=4"><i class="fas fa-history" ></i>&nbsp;Bill History</a>
 								</li>
-
+								<?php }
+								else{?>
 								<li class="<?php echo ($title == 'chef' ? "active" : "")?>">
 									<a href="dashboard.php?page=8"><i class="fas fa-history" ></i>&nbsp;Chef Section</a>
 								</li>
-
+								<?php }?>
 								<!-- Dropdown
 								<li class="panel panel-default" id="dropdown">
 									<a data-toggle="collapse" href="#dropdown-lvl1">
